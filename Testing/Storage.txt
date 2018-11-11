@@ -1,0 +1,15 @@
+Town 1
+{
+Shops:
+Bar,Jeff's
+Weapons,Jeff's,
+
+&Dungeon[1, "Rats", 6, 3, 50]
+&Dungeon[
+&Dungeon[
+}
+
+Town 2
+{
+	
+}
