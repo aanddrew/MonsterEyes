@@ -9,7 +9,7 @@
 class Player : public Character
 {
 private:
-	Zone zone;
+	
 public:
 	Player();
 

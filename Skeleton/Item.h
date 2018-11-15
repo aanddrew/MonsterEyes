@@ -7,10 +7,11 @@ using namespace std;
 
 class Item
 {
-private:
+protected:
 	string name;
 public:
 	Item(string);
+	void setName(string);
 	string getName();
 };
 #endif

@@ -16,6 +16,10 @@ private:
 	vector<Item> inventory;
 	// Equipable wearing[];
 
+	int level;
+
+	int xp;
+
 public:
 	Character(float,float);
 	//getters

@@ -4,7 +4,13 @@
 
 using namespace std;
 
+
 Item::Item(string nameIn)
+{
+	name = nameIn;
+}
+
+void Item::setName(string nameIn)
 {
 	name = nameIn;
 }

@@ -5,6 +5,10 @@ class Room
 {
 private:
 	Character c;
+
+	string message;
+
+	
 public:
 	void showInteractions();
 	//returns true if the player is still interacting with this Room

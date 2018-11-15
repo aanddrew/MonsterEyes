@@ -5,6 +5,12 @@
 
 #include <string>
 
+using namespace std;
+
+/*
+Equipables are Items that can be equiped. I.E. they have an equip function
+This is an abstract class that will be inherited by Armor and Weapon.
+*/
 class Equipable : public Item
 {
 private:
@@ -12,8 +18,9 @@ private:
 public:
 	Equipable(string);
 
-	virtual void equip(Player) = 0;
-	virtual void unequip(Player) = 0;
+	//these eventually to take player as an argument
+	virtual void equip()=0;
+	virtual void unequip()=0;
 };
 
 #endif
