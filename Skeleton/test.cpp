@@ -4,30 +4,42 @@
 #include "Item.h"
 #include "Equipable.h"
 #include "Armor.h"
+#include "Game.h"
+#include "Player.h"
+#include "Zone.h"
+#include "Room.h"
 
 using namespace std;
 
 int main()
 {
-	Character c(1.0,1.0);
+	Game g;
 
-	cout << c.getHealth() << endl;
-	cout << c.getInventorySize() << endl;
+	g.playGame();
 
-	for (int i = 0; i <c.getInventorySize(); i++)
-	{
-		cout << c.getItemAt(i).getName() << endl;
-	}
 
-	float x = 4.2;
-	// Armor e("hello", x, 2);
-	Armor a("this is the armors name", x, 2);
+	// Character c(1.0,1.0);
 
-	Equipable * e = &a;
+	// cout << c.getHealth() << endl;
+	// cout << c.getInventorySize() << endl;
 
-	e->equip();
+	// for (int i = 0; i <c.getInventorySize(); i++)
+	// {
+	// 	cout << c.getItemAt(i).getName() << endl;
+	// }
 
-	// a.equip();
+	// cout << c.getMaxHealth() << endl;
+
+	// float x = 4.2;
+	// Armor a("this is the armors name", x, 2);
+
+	// Equipable * e = &a;
+
+	// e->equip(c);
+
+	// cout << c.getMaxHealth() << endl;
+ 
+	// // // a.equip();
 
 	return 0;
 }

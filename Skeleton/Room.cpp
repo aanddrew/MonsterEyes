@@ -1,0 +1,31 @@
+#include <iostream>
+
+#include "Room.h"
+
+using namespace std;
+
+Room::Room(Character *cIn, string buildingIn, string messageIn, int refIn)
+{
+	building = buildingIn;
+	message = messageIn;
+	c = cIn;
+	ref = refIn;
+}
+
+Character* Room::getCharacter()
+{
+	return c;
+}
+
+void Room::showInteractions()
+{
+	cout << "You are in " << c->getName() << "'s " << building << "." << endl;
+
+	cout << c->getName() << " says: " << message << "." << endl;
+}
+
+//returns 0 if the interaction remains in this room
+int Room::doInteraction(int)
+{
+	return ref;
+}

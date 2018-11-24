@@ -3,8 +3,11 @@
 
 #include <vector>
 
-#include "Item.h"
-#include "Equipable.h"
+// class Character;
+
+#include "Character.h"
+
+using namespace std;
 
 class Player : public Character
 {
@@ -12,6 +15,7 @@ private:
 	
 public:
 	Player();
+	Player(string);
 
 	void showSelfInteractions();
 	void displayInventory();

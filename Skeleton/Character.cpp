@@ -1,15 +1,30 @@
 #include "Character.h"
 
-Character::Character(float healthIn, float maxHealthIn)
+Character::Character()
 {
-	health = healthIn;
+	name = "NULL";
+	health = 0;
+	maxHealth = 0;
+	level = 0;
+	xp = 0;
+}
+/*
+Character is a class that will be used to represent:
+The player
+The enemies.
+NPCs
+*/
+Character::Character(string nameIn, float maxHealthIn)
+{
+	name = nameIn;
+	health = maxHealthIn;
 	maxHealth = maxHealthIn;
 
-	inventory.reserve(20);
-	for (int i = 0; i < inventory.capacity(); i++)
+
+	for (int i = 0; i < 20; i++)
 	{
 		Item h(to_string(i) + " a");
-		inventory.push_back(h);
+		inventory[i] = &h;
 	}
 }
 
@@ -21,10 +36,14 @@ float Character::getMaxHealth()
 {
 	return maxHealth;
 }
+string Character::getName()
+{
+	return name;
+}
 
 //setters
 //returns true if the player is still alive after changing health
-bool Character::setHealth(float healthIn)
+void Character::setHealth(float healthIn)
 {
 	health = healthIn;
 }
@@ -34,18 +53,41 @@ void Character::setMaxHealth(float healthIn)
 	maxHealth = healthIn;
 }
 
-float Character::getDamageDealt()
+void Character::setLevel(int levelIn)
 {
-	return 1.0;
+	level = levelIn;
+}
+int Character::getLevel()
+{
+	return level;
+}
+
+void Character::levelUp()
+{
+	level++;
+	maxHealth += 6;
+	health = maxHealth;
+}
+
+int Character::getDamageDealt()
+{
+	// if (w == NULL)
+	// {
+	// 	return 1;
+	// }
+	// else
+	// {
+	// 	return w->getDamage();
+	// }
 }
 
 //more getters/setters
 int Character::getInventorySize()
 {
-	return inventory.capacity();
+	return 20;
 }
-Item Character::getItemAt(int i)
+Item* Character::getItemAt(int i)
 {
-	return inventory.at(i);
+	return inventory[i];
 }
 // Equipable Character::getWearingAt(int i);

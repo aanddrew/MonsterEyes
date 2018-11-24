@@ -1,0 +1,17 @@
+Player
+
+Z
+Harold,Bar,1
+Andy,$hop,
+4,Armor,"Wood Helm",4.2,4
+1,Weapon,"Wood Sword",
+D
+{
+7
+Rat,4,3
+}
+D
+{
+	
+}
+;

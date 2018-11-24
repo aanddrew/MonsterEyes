@@ -10,7 +10,7 @@ private:
 	int currentRoom;
 	vector<Room> rooms;
 public:
-	showInteractions();
+	void showInteractions();
 	bool doInteraction(Player, int);
 };
 

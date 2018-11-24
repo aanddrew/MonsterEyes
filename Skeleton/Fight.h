@@ -1,6 +1,7 @@
-#ifndef ROOM_H
-#define ROOM_H
+#ifndef FIGHT_H
+#define FIGHT_H
 
+#include "Room.h"
 #include "Character.h"
 
 #include <iostream>
@@ -8,21 +9,12 @@
 
 using namespace std;
 
-class Room
+class Fight : Public Room
 {
 private:
-	Character* c;
-
-	string building;
-	string message;
-
-	//either tells you which dungeon to go to or which room is next inside the dungeon
-	int ref;
 
 public:
-	Room(Character*, string, string, int);
-
-	Character* getCharacter();
+	Room(string, string, string, Character, int);
 
 	void showInteractions();
 	//returns the refernce returne from this interaction

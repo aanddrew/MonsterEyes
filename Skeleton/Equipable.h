@@ -1,7 +1,10 @@
 #ifndef EQUIPABLE_H
 #define EQUIPABLE_H
 
+class Character;
+
 #include "Item.h"
+#include "Character.h"
 
 #include <string>
 
@@ -19,8 +22,8 @@ public:
 	Equipable(string);
 
 	//these eventually to take player as an argument
-	virtual void equip()=0;
-	virtual void unequip()=0;
+	virtual bool equip(Character*)=0;
+	virtual bool unequip(Character*)=0;
 };
 
 #endif
