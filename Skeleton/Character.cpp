@@ -1,4 +1,8 @@
+#include <iostream>
+
 #include "Character.h"
+
+using namespace std;
 
 Character::Character()
 {
@@ -20,12 +24,11 @@ Character::Character(string nameIn, float maxHealthIn)
 	health = maxHealthIn;
 	maxHealth = maxHealthIn;
 
+	level = 0;
+	xp = 0;
 
-	for (int i = 0; i < 20; i++)
-	{
-		Item h(to_string(i) + " a");
-		inventory[i] = &h;
-	}
+
+	inventory.reserve(20);
 }
 
 float Character::getHealth()
@@ -71,23 +74,30 @@ void Character::levelUp()
 
 int Character::getDamageDealt()
 {
-	// if (w == NULL)
-	// {
-	// 	return 1;
-	// }
-	// else
-	// {
-	// 	return w->getDamage();
-	// }
+	if (wearing[0] == NULL)
+	{
+		return 1;
+	}
+	else
+	{
+		return rand() % getMaxDamage() + 1;
+	}
 }
 
+void Character::setMaxDamage(int dmgIn)
+{
+	maxDamage = dmgIn;
+}
+int Character::getMaxDamage(){return maxDamage;}
+
+
 //more getters/setters
-int Character::getInventorySize()
+
+vector<Item*>* Character::getInventory()
 {
-	return 20;
+	return &inventory;
 }
-Item* Character::getItemAt(int i)
+Equipable** Character::getWearing()
 {
-	return inventory[i];
+	return wearing;
 }
-// Equipable Character::getWearingAt(int i);

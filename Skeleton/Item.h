@@ -16,5 +16,7 @@ public:
 	Item(string);
 	void setName(string);
 	string getName();
+
+	virtual string getInfo();
 };
 #endif

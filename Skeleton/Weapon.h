@@ -22,9 +22,9 @@ public:
 
 	int getMaxDamage();
 
-	int getDamage();
-
 	bool equip(Character*);
 	bool unequip(Character*);
+
+	string getInfo();
 };
 #endif

@@ -1,12 +1,14 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+#include <cstdlib>
 #include <string>
 #include <vector>
 
 #include "Item.h"
-// #include "Equipable.h"
+#include "Equipable.h"
 // #include "Weapon.h"
+// #include "Armor.h"
 
 using namespace std;
 
@@ -25,8 +27,10 @@ private:
 	float health;
 	float maxHealth;
 
-	Item* inventory[20];
-	// Equipable* wearing[4];
+	int maxDamage;
+
+	vector<Item*> inventory;
+	Equipable* wearing[5];
 
 	// Weapon* w;
 
@@ -55,10 +59,13 @@ public:
 
 	int getDamageDealt();
 
+	void setMaxDamage(int);
+	int getMaxDamage();
+
 	//more getters/setters
 	int getInventorySize();
-	Item* getItemAt(int);
-	// Equipable getWearingAt(int);
+	vector<Item*>* getInventory();
+	Equipable** getWearing();
 };
 
 #endif

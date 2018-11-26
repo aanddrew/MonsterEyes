@@ -11,32 +11,18 @@ On equip, it gives the player extra health.
 On unequip, it removes that extra health from the player.
 Simple.
 */
-Armor::Armor(string nameIn, float extraHealthIn, int slotIn) : Equipable(nameIn)
+Armor::Armor(string nameIn, int extraHealthIn, int slotIn) : Equipable(nameIn, slotIn)
 {
 	extraHealth = extraHealthIn;
-	slot = slotIn;
-
 }
 
-float Armor::getExtraHealth()
+int Armor::getExtraHealth()
 {
 	return extraHealth;
 }
 
-int Armor::getSlot()
-{
-	return slot;
-}
-
-
-
 bool Armor::equip(Character *c)
 {
-	// Item* i = this;
-	// cout << "my name is: " << i->getName() << endl;
-
-	// cout << "my name is: " << this->getName() << endl;
-
 	c->setMaxHealth(c->getMaxHealth() + extraHealth);
 	return true;
 }
@@ -45,4 +31,9 @@ bool Armor::unequip(Character *c)
 {
 	c->setMaxHealth(c->getMaxHealth() - extraHealth);
 	return true;
+}
+
+string Armor::getInfo()
+{
+	return name + " gives you " + to_string(extraHealth) + " extra health.";
 }

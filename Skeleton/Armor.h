@@ -2,7 +2,6 @@
 #define ARMOR_H
 
 #include "Equipable.h"
-#include "Player.h"
 #include "Character.h"
 
 #include <string>
@@ -18,16 +17,15 @@ When unequiped, it subracts extraHealth from the player
 class Armor : public Equipable
 {
 private:
-	float extraHealth;
-	int slot;
+	int extraHealth;
 public:
-	Armor(string, float, int);
+	Armor(string, int, int);
 
-	float getExtraHealth();
-	int getSlot();
+	int getExtraHealth();
 
 	bool equip(Character*);
 	bool unequip(Character*);
 
+	string getInfo() override;
 };
 #endif

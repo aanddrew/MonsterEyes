@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Item.h"
+#include "Character.h"
 
 using namespace std;
 
@@ -18,4 +19,9 @@ void Item::setName(string nameIn)
 string Item::getName()
 {
 	return name;	
+}
+
+string Item::getInfo()
+{
+	return "Hello";
 }

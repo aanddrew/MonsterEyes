@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Weapon::Weapon(string nameIn, int maxDamageIn) : Equipable(nameIn)
+Weapon::Weapon(string nameIn, int maxDamageIn) : Equipable(nameIn, 0)
 {
 	maxDamage = maxDamageIn;
 }
@@ -13,17 +13,22 @@ int Weapon::getMaxDamage()
 	return maxDamage;
 }
 
-int Weapon::getDamage()
-{
-	int d = rand() % getMaxDamage() + 1;
-	return d;
-}
-
 bool Weapon::equip(Character *c)
 {
-	return true;
+	c->getWearing()[0] = this;
+	c->setMaxDamage(this->getMaxDamage());
 }
 bool Weapon::unequip(Character *c)
 {
-	return true;
+	c->getWearing()[0] = NULL;
+	c->setMaxDamage(1);
+}
+
+string Weapon::getInfo()
+{
+	string returned = name;
+	returned += " does a maximum of ";
+	returned += to_string(maxDamage);
+	returned += " damage.";
+	return returned;
 }

@@ -4,7 +4,6 @@
 class Character;
 
 #include "Item.h"
-#include "Character.h"
 
 #include <string>
 
@@ -17,13 +16,17 @@ This is an abstract class that will be inherited by Armor and Weapon.
 class Equipable : public Item
 {
 private:
-
+	int slot;
 public:
-	Equipable(string);
+	Equipable(string, int);
+
+	int getSlot();
 
 	//these eventually to take player as an argument
 	virtual bool equip(Character*)=0;
 	virtual bool unequip(Character*)=0;
+
+	// virtual string getInfo()=0;
 };
 
 #endif

@@ -9,6 +9,8 @@
 #include "Room.h"
 #include "Item.h"
 #include "Weapon.h"
+#include "Consumable.h"
+#include "HealthPot.h"
 
 using namespace std;
 
@@ -31,6 +33,7 @@ public:
 	void enterRoom();
 	void enterDungeon();
 
-	void playGame();
+	void testGame();
+	void testGame2();
 };
 #endif
