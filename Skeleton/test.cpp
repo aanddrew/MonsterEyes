@@ -9,7 +9,7 @@ int main()
 	Game g;
 
 	// g.testGame();
-	g.testGame2();
+	g.testGame3();
 
 	return 0;
 }

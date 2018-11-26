@@ -24,13 +24,16 @@ class Character
 {
 private:
 	string name;
-	float health;
-	float maxHealth;
+	int health;
+	int maxHealth;
+
+	int gold;
 
 	int maxDamage;
 
 	vector<Item*> inventory;
 	Equipable* wearing[5];
+	bool wearingFlags[5] ={false,false,false,false,false};
 
 	// Weapon* w;
 
@@ -40,17 +43,17 @@ private:
 
 public:
 	Character();
-	Character(string, float);
+	Character(string, int);
 	//getters
-	float getHealth();
-	float getMaxHealth();
+	int getHealth();
+	int getMaxHealth();
 	string getName();
 
 	//setters
 	//returns true if the player is still alive after changing health
-	void setHealth(float);
+	void setHealth(int);
 	//permanently change the players maxHealth
-	void setMaxHealth(float);
+	void setMaxHealth(int);
 
 	void setLevel(int);
 	int getLevel();
@@ -66,6 +69,8 @@ public:
 	int getInventorySize();
 	vector<Item*>* getInventory();
 	Equipable** getWearing();
+	void setWearing(int, bool);
+	bool isWearing(int);
 };
 
 #endif

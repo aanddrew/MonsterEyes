@@ -23,13 +23,45 @@ int Armor::getExtraHealth()
 
 bool Armor::equip(Character *c)
 {
+	//if the player is already wearing something
+	if (c->isWearing(this->getSlot()))
+	{
+		//put it back in their inventory
+		c->getInventory()->push_back(c->getWearing()[this->getSlot()]);
+	}
+
+	//the player is now wearing something in this slot
+	c->setWearing(this->getSlot(), true);
+
+	//the player is wearing /this/ in the slot
+	c->getWearing()[this->getSlot()] = this;
+
+	//erase the item from their inventory now.
+	for (int i = 0; i < c->getInventory()->size(); i++)
+	{
+		if (c->getInventory()->at(i) == this)
+		{
+			c->getInventory()->erase(c->getInventory()->begin()+i);
+			break;
+		}
+	}
+
+	//apply the effects of equiping
 	c->setMaxHealth(c->getMaxHealth() + extraHealth);
 	return true;
 }
 
 bool Armor::unequip(Character *c)
 {
+	//this player no longer wears something in this slot
+	c->setWearing(this->getSlot(), false);
+
+	//put it back in their inventory
+	c->getInventory()->push_back(this);
+	//remove effects of equiping this object
 	c->setMaxHealth(c->getMaxHealth() - extraHealth);
+
+	c->getWearing()[this->getSlot()] = NULL;
 	return true;
 }
 

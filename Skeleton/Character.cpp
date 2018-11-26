@@ -7,6 +7,7 @@ using namespace std;
 Character::Character()
 {
 	name = "NULL";
+	gold = 0;
 	health = 0;
 	maxHealth = 0;
 	level = 0;
@@ -18,24 +19,25 @@ The player
 The enemies.
 NPCs
 */
-Character::Character(string nameIn, float maxHealthIn)
+Character::Character(string nameIn, int maxHealthIn)
 {
 	name = nameIn;
 	health = maxHealthIn;
 	maxHealth = maxHealthIn;
 
-	level = 0;
+	level = 1;
 	xp = 0;
+	gold = 0;
 
 
 	inventory.reserve(20);
 }
 
-float Character::getHealth()
+int Character::getHealth()
 {
 	return health;
 }
-float Character::getMaxHealth()
+int Character::getMaxHealth()
 {
 	return maxHealth;
 }
@@ -46,12 +48,12 @@ string Character::getName()
 
 //setters
 //returns true if the player is still alive after changing health
-void Character::setHealth(float healthIn)
+void Character::setHealth(int healthIn)
 {
 	health = healthIn;
 }
 //permanently change the players maxHealth
-void Character::setMaxHealth(float healthIn)
+void Character::setMaxHealth(int healthIn)
 {
 	maxHealth = healthIn;
 }
@@ -100,4 +102,13 @@ vector<Item*>* Character::getInventory()
 Equipable** Character::getWearing()
 {
 	return wearing;
+}
+void Character::setWearing(int i, bool b)
+{
+	wearingFlags[i] = b;
+}
+
+bool Character::isWearing(int i)
+{
+	return wearingFlags[i];
 }

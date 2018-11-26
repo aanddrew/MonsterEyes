@@ -17,8 +17,11 @@ public:
 	Player();
 	Player(string);
 
+	void levelUp();
+
 	void showSelfInteractions();
-	void displayInventory();
+	void showInventory();
+	void showInfo();
 };
 
 #endif

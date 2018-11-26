@@ -11,10 +11,12 @@ HealthPot::HealthPot(int healthIn) : Consumable("Health Potion")
 
 bool HealthPot::consume(Character* c)
 {
+	//if the player would be healed past full health, set their health to full
 	if (c->getHealth()+health > c->getMaxHealth())
 	{
 		c->setHealth(c->getMaxHealth());
 	}
+	//otherwise just add the health from the pot
 	c->setHealth(c->getHealth() + health);
 }
 

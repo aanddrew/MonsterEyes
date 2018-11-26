@@ -1,0 +1,17 @@
+Tavern
+Bar
+Library
+Pub
+Restaurant
+Farm
+Mine
+Warehouse
+Inn
+Vending
+Cottage
+Barn
+Stables
+Well
+Shack
+Hall
+Granary

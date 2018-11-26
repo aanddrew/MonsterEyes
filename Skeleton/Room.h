@@ -24,6 +24,9 @@ public:
 
 	Character* getCharacter();
 
+	void setMessage(string);
+	string getMessage();
+
 	void showInteractions();
 	//returns the refernce returne from this interaction
 	//It may return the index of a dungeon or a boolean if the monster in it is dead

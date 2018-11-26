@@ -12,6 +12,16 @@ Room::Room(Character *cIn, string buildingIn, string messageIn, int refIn)
 	ref = refIn;
 }
 
+void Room::setMessage(string messageIn)
+{
+	message = messageIn;
+}
+
+string Room::getMessage()
+{
+	return message;
+}
+
 Character* Room::getCharacter()
 {
 	return c;

@@ -1,7 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <iostream>
 #include <string>
+
+#include <fstream>
 
 #include "Player.h"
 #include "Zone.h"
@@ -26,6 +29,8 @@ private:
 public:
 	Game();
 
+	void loadGame();
+
 	void generateZones();
 
 	void changeZone(int);
@@ -35,5 +40,6 @@ public:
 
 	void testGame();
 	void testGame2();
+	void testGame3();
 };
 #endif
