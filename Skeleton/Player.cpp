@@ -36,8 +36,9 @@ void Player::showInfo()
 	//printing various things
 	cout << "Info for " << this->getName() << ":" << endl;
 	cout << "\t" << "Level: " << this->getLevel() << endl;
-	cout << "\t" << "Max Health: " << this->getMaxHealth() << endl;
+	cout << "\t" << "XP: " << this->getXP() << endl;
 	cout << "\t" << "Current Health: " << this->getHealth() << endl;
+	cout << "\t" << "Max Health: " << this->getMaxHealth() << endl;
 	cout << "\t" << "Equipped:" << endl;
 	for (int i = 0; i < 5; i++)
 	{

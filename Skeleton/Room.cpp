@@ -22,6 +22,11 @@ string Room::getMessage()
 	return message;
 }
 
+string Room::getBuilding()
+{
+	return building;
+}
+
 Character* Room::getCharacter()
 {
 	return c;

@@ -47,6 +47,8 @@ public:
 	//getters
 	int getHealth();
 	int getMaxHealth();
+
+	void setName(string);
 	string getName();
 
 	//setters
@@ -55,8 +57,14 @@ public:
 	//permanently change the players maxHealth
 	void setMaxHealth(int);
 
+	void setGold(int);
+	int getGold();
+
 	void setLevel(int);
 	int getLevel();
+
+	void setXP(int);
+	int getXP();
 
 	void levelUp();
 

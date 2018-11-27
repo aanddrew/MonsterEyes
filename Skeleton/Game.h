@@ -21,6 +21,7 @@ class Game
 {
 private:
 	Player p;
+	const int numZones;
 	Zone zones[10];
 
 	int currentZone;
@@ -41,5 +42,6 @@ public:
 	void testGame();
 	void testGame2();
 	void testGame3();
+	void testGame4();
 };
 #endif

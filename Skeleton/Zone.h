@@ -13,10 +13,12 @@ class Zone
 private:
 	string name;
 
+	int numRooms;
+	int numDungeons;
 	int level;
 
-	vector<Room> rooms;
-	vector<Dungeon> dungeons;
+	vector<Room*> rooms;
+	vector<Dungeon*> dungeons;
 
 	int currentRoom;
 	int currentDungeon;
@@ -24,15 +26,19 @@ public:
 	//for testing purposes
 	Zone();
 	//not for testing
-	Zone(int);
+	Zone(int, int, int);
 
 	void showInteractions();
 	void interact();
 
+	int getNumRooms();
+	int getNumDungeons();
+
+	vector<Dungeon*>* getDungeons();
+	vector<Room*>* getRooms();
+
 	void enterDungeon(int);
 
 	int getLevel();
-	Room getRoomAt(int);
 };
-
 #endif

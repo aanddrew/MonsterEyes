@@ -41,6 +41,11 @@ int Character::getMaxHealth()
 {
 	return maxHealth;
 }
+void Character::setName(string nameIn)
+{
+	name = nameIn;
+}
+
 string Character::getName()
 {
 	return name;
@@ -56,6 +61,25 @@ void Character::setHealth(int healthIn)
 void Character::setMaxHealth(int healthIn)
 {
 	maxHealth = healthIn;
+}
+
+void Character::setGold(int goldIn)
+{
+	gold = goldIn;
+}
+
+int Character::getGold()
+{
+	return gold;
+}
+
+void Character::setXP(int XPIn)
+{
+	xp = XPIn;
+}
+int Character::getXP()
+{
+	return xp;
 }
 
 void Character::setLevel(int levelIn)
@@ -76,7 +100,7 @@ void Character::levelUp()
 
 int Character::getDamageDealt()
 {
-	if (wearing[0] == NULL)
+	if (!wearingFlags[0])
 	{
 		return 1;
 	}

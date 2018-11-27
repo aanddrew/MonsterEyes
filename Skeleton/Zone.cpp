@@ -7,9 +7,32 @@ Zone::Zone()
 	level = 1;
 }
 
-Zone::Zone(int levelIn)
+Zone::Zone(int levelIn, int numRoomsIn, int numDungeonsIn)
 {
-	level = levelIn;	
+	numRooms = numRoomsIn;
+	numDungeons = numDungeonsIn;
+	level = levelIn;
+	dungeons.reserve(numDungeons);
+}
+
+vector<Dungeon*>* Zone::getDungeons()
+{
+	return &dungeons;
+}
+
+vector<Room*>* Zone::getRooms()
+{
+	return &rooms;
+}
+
+int Zone::getNumRooms()
+{
+	return numRooms; 
+}
+
+int Zone::getNumDungeons()
+{
+	return numDungeons;
 }
 
 // void showInteractions();
@@ -21,4 +44,3 @@ int Zone::getLevel()
 {
 	return level;
 }
-// Room getRoomAt(int);
