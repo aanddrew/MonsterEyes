@@ -2,6 +2,10 @@
 
 using namespace std;
 
+/*
+Dungeons contains rooms which contain Characters
+These characters are intended to be 
+*/
 Dungeon::Dungeon(string nameIn, int numRooms, int maxDamage, int levelIn)
 {
 	currentRoom = 0;

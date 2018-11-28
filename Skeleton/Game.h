@@ -43,5 +43,9 @@ public:
 	void testGame2();
 	void testGame3();
 	void testGame4();
+
+	bool getMiscOptions(string input);
+
+	void playGame();
 };
 #endif

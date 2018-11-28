@@ -136,3 +136,8 @@ bool Character::isWearing(int i)
 {
 	return wearingFlags[i];
 }
+
+bool Character::alive()
+{
+	return health > 0;
+}

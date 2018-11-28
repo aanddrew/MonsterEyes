@@ -199,6 +199,64 @@ void Game::loadGame()
 				if (s != "NULL")
 				{
 					//add the item to their inventory
+					string type ="";
+					int i;
+					for (i = 0; i < s.length() && s[i] != ','; i++)
+					{
+						type += s[i];
+					}
+					i++;
+
+					if (type == "Armor" || type == "Weapon")
+					{
+						string name;
+						//Health or Damage
+						int HealthorDamage;
+						int slot;
+						string temp;
+						for (; i < s.length() && s[i] != ','; i++)
+						{
+							name += s[i];
+						}
+						i++;
+						for (; i < s.length() && s[i] != ','; i++)
+						{
+							temp += s[i];
+						}
+						i++;
+						HealthorDamage = stoi(temp);
+
+						if (type == "Armor")
+						{
+							temp == "";
+							for (; i < s.length(); i++)
+							{
+								temp += s[i];
+							}
+							slot = stoi(temp);
+
+							Armor * a = new Armor(name, HealthorDamage, slot);
+							p.getInventory()->push_back(a);
+						}
+						else
+						{
+							Weapon * w = new Weapon(name, HealthorDamage);
+							p.getInventory()->push_back(w);
+						}
+					}
+					if (type == "HealthPot")
+					{
+						string temp;
+						int health;
+						for (; i < s.length(); i++)
+						{
+							temp += s[i];
+						}
+						health = stoi(temp);
+
+						HealthPot * h = new HealthPot(health);
+						p.getInventory()->push_back(h);
+					}
 				}
 
 				if (s== "endI")
@@ -214,7 +272,52 @@ void Game::loadGame()
 			{
 				if (s != "NULL")
 				{
-					//add this item to their wearing stack
+					//add the item to their inventory
+					string type ="";
+					int i;
+					for (i = 0; i < s.length() && s[i] != ','; i++)
+					{
+						type += s[i];
+					}
+					i++;
+
+					if (type == "Armor" || type == "Weapon")
+					{
+						string name;
+						//Health or Damage
+						int HealthorDamage;
+						int slot;
+						string temp;
+						for (; i < s.length() && s[i] != ','; i++)
+						{
+							name += s[i];
+						}
+						i++;
+						for (; i < s.length() && s[i] != ','; i++)
+						{
+							temp += s[i];
+						}
+						i++;
+						HealthorDamage = stoi(temp);
+
+						if (type == "Armor")
+						{
+							temp == "";
+							for (; i < s.length(); i++)
+							{
+								temp += s[i];
+							}
+							slot = stoi(temp);
+
+							Armor * a = new Armor(name, HealthorDamage, slot);
+							a->equip(&p);
+						}
+						else
+						{
+							Weapon * w = new Weapon(name, HealthorDamage);
+							w->equip(&p);
+						}
+					}
 				}
 
 				if (s == "endW")
@@ -546,4 +649,111 @@ void Game::testGame4()
 				 zones[z].getDungeons()->at(i)->getRooms()->at(0)->getCharacter()->getDamageDealt() << " damage." << endl;
 		}
 	}
+}
+
+void Game::playGame()
+{
+	// p.showInfo();
+	// p.showInventory();
+
+	cout << "Welcome to Monster Eyes " << p.getName() << "!" << endl;
+	string input;
+	int choice;
+	while(p.alive() && input != "Q")
+	{
+		//if the player is just sitting in the outer zone
+		if (currentRoom == -1 && currentDungeon == -1)
+		{
+			cout << "You are currently in Zone " << currentZone + 1 << "." << endl;
+			cout << "Would you like to: " << endl;
+			cout << "\tEnter a building? (1)" << endl;
+
+			cin >> input;
+			choice = stoi(input);
+			switch(choice)
+			{
+				case 1:
+				{
+					cout << "Which building would you like to enter?" << endl;
+					int i;
+					for (i = 0; i < zones[currentZone].getRooms()->size(); i++)
+					{
+						cout << "\t(" << i << ") " 
+							 << zones[currentZone].getRooms()->at(i)->getCharacter()->getName() << "'s "
+							 << zones[currentZone].getRooms()->at(i)->getBuilding() << "?" << endl;
+					}
+					cout << "\t(" << i << ")" << " None?" << endl;
+					cin >> input;
+					choice = stoi(input);
+					if (choice < i)
+					{
+						currentRoom = choice;	
+					}
+				}
+			}
+		}
+		else if(currentDungeon == -1)
+		{
+			//I will be accessing the current room a lot
+			//this is for readability and my own sanity
+			Room * currentRoomP = zones[currentZone].getRooms()->at(currentRoom);
+
+			cout << "You are currently in " << currentRoomP->getCharacter()->getName() << "'s " <<
+					currentRoomP->getBuilding() << "." << endl;
+
+			bool inRoom = true;
+			while (inRoom)
+			{
+				cout << "Would you like to: " << endl;
+				
+				cout << "\tTalk to " << currentRoomP->getCharacter()->getName() << "? (1)" << endl;
+				cout << "\tLeave the building? (2)" << endl;
+				cin >> input;
+
+				choice = stoi(input);
+
+				switch(choice)
+				{
+					case 1:
+					{
+						cout << currentRoomP->getCharacter()->getName() << " says: " <<
+						currentRoomP->getMessage() << "?" << endl;
+						cout << "\t(Y)es or (N)o?" << endl;
+
+						cin >> input;
+
+						if (input == "y" || input == "Y")
+						{
+							//this is supposed to start the dungeon loop
+						}
+						if (input == "n" || input == "N")
+						{
+							int x = rand() % 3;
+							switch (x)
+							{
+								case 0: cout << currentRoomP->getCharacter()->getName() << " says: Goodbye!" << endl;
+									break;
+								case 1: cout << currentRoomP->getCharacter()->getName() << " says: Cya Later!" << endl;
+									break;
+								case 2: cout << currentRoomP->getCharacter()->getName() << " says: Okay, may our paths cross again..." << endl;
+									break;
+							}
+							
+						}
+						break;
+					}
+					case 2:
+					{
+						currentRoom = -1;
+						inRoom = false;
+						break;
+					}
+				}
+			//while (input != "L") ends
+			}
+		//else if(currentDungeon == -1) ends
+		}
+	//while(p.alive() && input != "Q") ends
+	}
+//playGame() ends
 }

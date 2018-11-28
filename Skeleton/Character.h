@@ -79,6 +79,8 @@ public:
 	Equipable** getWearing();
 	void setWearing(int, bool);
 	bool isWearing(int);
+
+	bool alive();
 };
 
 #endif

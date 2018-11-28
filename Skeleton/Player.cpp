@@ -16,7 +16,7 @@ Player::Player(string nameIn) : Character(nameIn, 5.0)
 
 void Player::showInventory()
 {
-	cout << this->getName() << "'s Inventory: " << endl;
+	cout << this->getName() << "'s Inventory: (Maximum size: " << this->getInventory()->capacity() << ")" << endl;
 	for (int i = 0; i < this->getInventory()->size(); i++)
 	{
 		cout << "\t" <<  i << ": " << this->getInventory()->at(i)->getName() << endl;
@@ -39,6 +39,7 @@ void Player::showInfo()
 	cout << "\t" << "XP: " << this->getXP() << endl;
 	cout << "\t" << "Current Health: " << this->getHealth() << endl;
 	cout << "\t" << "Max Health: " << this->getMaxHealth() << endl;
+	cout << "\t" << "Gold: " << this->getGold() << endl;
 	cout << "\t" << "Equipped:" << endl;
 	for (int i = 0; i < 5; i++)
 	{

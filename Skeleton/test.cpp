@@ -8,9 +8,7 @@ int main()
 {
 	Game g;
 
-	// g.testGame();
-	// g.testGame3();
-	g.testGame4();
+	g.playGame();
 
 	return 0;
 }
