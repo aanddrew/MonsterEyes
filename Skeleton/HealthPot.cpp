@@ -4,7 +4,7 @@
 
 using namespace std;
 
-HealthPot::HealthPot(int healthIn) : Consumable("Health Potion")
+HealthPot::HealthPot(string nameIn, int healthIn) : Consumable(nameIn)
 {
 	health = healthIn;
 }
@@ -18,6 +18,11 @@ bool HealthPot::consume(Character* c)
 	}
 	//otherwise just add the health from the pot
 	c->setHealth(c->getHealth() + health);
+}
+
+int HealthPot::getHealth()
+{
+	return health;
 }
 
 string HealthPot::getInfo()

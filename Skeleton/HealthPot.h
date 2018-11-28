@@ -13,9 +13,11 @@ class HealthPot : public Consumable
 private:
 	int health;
 public:
-	HealthPot(int);
+	HealthPot(string, int);
 
 	bool consume(Character*);
+
+	int getHealth();
 
 	string getInfo() override;
 };

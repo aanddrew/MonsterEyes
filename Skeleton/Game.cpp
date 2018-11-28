@@ -52,7 +52,7 @@ Game::Game():numZones(10)
 
 			p = Player(input);
 			//player level
-			outputFile << "0" << endl;
+			outputFile << "1" << endl;
 			//player xp
 			outputFile << "0" << endl;
 			//amount of gold
@@ -228,7 +228,7 @@ void Game::loadGame()
 
 						if (type == "Armor")
 						{
-							temp == "";
+							temp = "";
 							for (; i < s.length(); i++)
 							{
 								temp += s[i];
@@ -246,15 +246,21 @@ void Game::loadGame()
 					}
 					if (type == "HealthPot")
 					{
+						string name;
 						string temp;
 						int health;
-						for (; i < s.length(); i++)
+						for (; i < s.length()&&s[i] != ','; i++)
+						{
+							name += s[i];
+						}
+						i++;
+						for (; i< s.length(); i++)
 						{
 							temp += s[i];
 						}
 						health = stoi(temp);
 
-						HealthPot * h = new HealthPot(health);
+						HealthPot * h = new HealthPot(name, health);
 						p.getInventory()->push_back(h);
 					}
 				}
@@ -511,7 +517,7 @@ void Game::testGame()
 	p.getInventory()->push_back(&l);
 	p.getInventory()->push_back(&e);
 
-	HealthPot healthPot(5);
+	HealthPot healthPot("Cabbage", 5);
 
 	cout << p.getInventory()->size() << endl;
 
@@ -658,7 +664,7 @@ void Game::playGame()
 
 	cout << "Welcome to Monster Eyes " << p.getName() << "!" << endl;
 	string input;
-	int choice;
+	int choice = 0;
 	while(p.alive() && input != "Q")
 	{
 		//if the player is just sitting in the outer zone
@@ -667,27 +673,66 @@ void Game::playGame()
 			cout << "You are currently in Zone " << currentZone + 1 << "." << endl;
 			cout << "Would you like to: " << endl;
 			cout << "\tEnter a building? (1)" << endl;
+			cout << "\tGo to the previous zone? (2)" << endl;
+			cout << "\tGo to the next zone? (3)" << endl;
+			showPlayerOptions();
 
 			cin >> input;
-			choice = stoi(input);
-			switch(choice)
+
+			if(!getPlayerOptions(input))
 			{
-				case 1:
+				choice = stoi(input);
+				switch(choice)
 				{
-					cout << "Which building would you like to enter?" << endl;
-					int i;
-					for (i = 0; i < zones[currentZone].getRooms()->size(); i++)
+					case 1:
 					{
-						cout << "\t(" << i << ") " 
-							 << zones[currentZone].getRooms()->at(i)->getCharacter()->getName() << "'s "
-							 << zones[currentZone].getRooms()->at(i)->getBuilding() << "?" << endl;
+						cout << "Which building would you like to enter?" << endl;
+						int i;
+						for (i = 0; i < zones[currentZone].getRooms()->size(); i++)
+						{
+							cout << "\t(" << i << ") " 
+								 << zones[currentZone].getRooms()->at(i)->getCharacter()->getName() << "'s "
+								 << zones[currentZone].getRooms()->at(i)->getBuilding() << "?" << endl;
+						}
+						cout << "\t(" << i << ")" << " None?" << endl;
+
+						cin >> input;
+
+						choice = stoi(input);
+						if (choice < i)
+						{
+							currentRoom = choice;	
+						}
+						break;
 					}
-					cout << "\t(" << i << ")" << " None?" << endl;
-					cin >> input;
-					choice = stoi(input);
-					if (choice < i)
+					case 2:
 					{
-						currentRoom = choice;	
+						if (currentZone == 0)
+						{
+							cout << "This is the first zone..." << endl;
+						}
+						else
+						{
+							currentZone--;
+						}
+						break;
+					}
+					case 3:
+					{
+						if (currentZone == numZones-1)
+						{
+							cout << "Sorry, there is no next zone!" << endl;
+						}
+						else if (p.getLevel() < zones[currentZone+1].getLevel())
+						{
+							cout << "You are not high enough level for that zone." << endl;
+							cout << "\tYou must be level " << zones[currentZone+1].getLevel() << "." << endl;
+						}
+						else
+						{
+							currentZone++;
+						}
+						break;
 					}
 				}
 			}
@@ -708,45 +753,49 @@ void Game::playGame()
 				
 				cout << "\tTalk to " << currentRoomP->getCharacter()->getName() << "? (1)" << endl;
 				cout << "\tLeave the building? (2)" << endl;
+
+				showPlayerOptions();
 				cin >> input;
 
-				choice = stoi(input);
-
-				switch(choice)
+				if(!getPlayerOptions(input))
 				{
-					case 1:
+					choice = stoi(input);
+					switch(choice)
 					{
-						cout << currentRoomP->getCharacter()->getName() << " says: " <<
-						currentRoomP->getMessage() << "?" << endl;
-						cout << "\t(Y)es or (N)o?" << endl;
-
-						cin >> input;
-
-						if (input == "y" || input == "Y")
+						case 1:
 						{
-							//this is supposed to start the dungeon loop
-						}
-						if (input == "n" || input == "N")
-						{
-							int x = rand() % 3;
-							switch (x)
+							cout << currentRoomP->getCharacter()->getName() << " says: " <<
+							currentRoomP->getMessage() << "?" << endl;
+							cout << "\t(Y)es or (N)o?" << endl;
+
+							cin >> input;
+
+							if (input == "y" || input == "Y")
 							{
-								case 0: cout << currentRoomP->getCharacter()->getName() << " says: Goodbye!" << endl;
-									break;
-								case 1: cout << currentRoomP->getCharacter()->getName() << " says: Cya Later!" << endl;
-									break;
-								case 2: cout << currentRoomP->getCharacter()->getName() << " says: Okay, may our paths cross again..." << endl;
-									break;
+								//this is supposed to start the dungeon loop
 							}
-							
+							if (input == "n" || input == "N")
+							{
+								int x = rand() % 3;
+								switch (x)
+								{
+									case 0: cout << currentRoomP->getCharacter()->getName() << " says: Goodbye!" << endl;
+										break;
+									case 1: cout << currentRoomP->getCharacter()->getName() << " says: Cya Later!" << endl;
+										break;
+									case 2: cout << currentRoomP->getCharacter()->getName() << " says: Okay, may our paths cross again..." << endl;
+										break;
+								}
+								
+							}
+							break;
 						}
-						break;
-					}
-					case 2:
-					{
-						currentRoom = -1;
-						inRoom = false;
-						break;
+						case 2:
+						{
+							currentRoom = -1;
+							inRoom = false;
+							break;
+						}
 					}
 				}
 			//while (input != "L") ends
@@ -756,4 +805,134 @@ void Game::playGame()
 	//while(p.alive() && input != "Q") ends
 	}
 //playGame() ends
+}
+
+void Game::showPlayerOptions()
+{
+	cout << "\tShow your stats? (S)" << endl;
+	cout << "\tShow your Inventory? (I)" << endl;
+	cout << "\tSave the game? (SA)" << endl;
+}
+
+bool Game::getPlayerOptions(string input)
+{
+	if (input == "S" || input == "s")
+	{
+		p.showInfo();
+		return true;
+	}
+	else if(input == "I" || input == "i")
+	{
+		p.showInventory();
+		return true;
+	}
+	else if(input == "SA" || input == "sa")
+	{
+		saveGame();
+		return true;
+	}
+	return false;
+}
+
+void Game::saveGame()
+{
+	ifstream inputFile("Game.txt"); //File to read from
+	ofstream outputFile("GameTemp.txt"); //temp
+
+	cout << "Saving..." << endl;
+
+
+	outputFile << "G" << endl;
+	outputFile << currentZone << endl;
+	outputFile << currentRoom << endl;
+	outputFile << currentDungeon << endl;
+	outputFile << "endG" << endl;
+
+	outputFile << "P" << endl;
+	//player stats
+	outputFile << p.getName() << endl;
+	outputFile << p.getLevel() << endl;
+	outputFile << p.getXP() << endl;
+	outputFile << p.getGold() << endl;
+	outputFile << p.getHealth() << endl;
+	outputFile << p.getMaxHealth() << endl;
+	outputFile << p.getMaxDamage() << endl;
+
+	outputFile << "I" << endl;
+	int k;
+	for (k = 0; k < p.getInventory()->size(); k++)
+	{
+		Item * item = p.getInventory()->at(k);
+
+		if (dynamic_cast<Armor*>(item) != nullptr)
+		{
+			Armor * a = dynamic_cast<Armor*>(item);
+			outputFile << "Armor" << ",";
+			outputFile << a->getName() << ",";
+			outputFile << a->getExtraHealth() << ",";
+			outputFile << a->getSlot() << endl;
+		}
+		else if (dynamic_cast<Weapon*>(item) != nullptr)
+		{
+			Weapon * w = dynamic_cast<Weapon*>(item);
+			outputFile << "Weapon,";
+			outputFile << w->getName() << ",";
+			outputFile << w->getMaxDamage() << endl;
+		}
+		else if (dynamic_cast<HealthPot*>(item) != nullptr)
+		{
+			HealthPot * h = dynamic_cast<HealthPot*>(item);
+			outputFile << "HealthPot,";
+			outputFile << h->getName() << ",";
+			outputFile << h->getHealth() << endl;
+		}
+	}
+	for (; k < p.getInventory()->capacity(); k++)
+	{
+		outputFile << "NULL" << endl;
+	}
+	outputFile << "endI" << endl;
+
+	outputFile << "W" << endl;
+	for (k = 0; k < 5; k++)
+	{
+		if (p.isWearing(k))
+		{
+
+		}
+		else
+		{
+			outputFile << "NULL" << endl;
+		}
+	}
+	outputFile << "endW" << endl;
+	outputFile << "endP" << endl;
+
+	string temp;
+	int i = 1;
+	while (getline(inputFile, temp))
+	{
+		if (i > 43)
+		{
+			//re-write the old stuff
+			outputFile << temp << endl;
+		}
+		i++;
+	}
+	outputFile.close();
+	inputFile.close();
+
+
+	//now the contents of the game currently (the newGame) are stored in GameTemp.txt
+	//so I open Game.txt as the oldGame, and GameTemp as newGame
+	ofstream oldGame("Game.txt", std::ofstream::out | std::ofstream::trunc);
+	ifstream newGame("GameTemp.txt");
+
+	//copy contents from newGame into the oldGame File.
+	while(getline(newGame,temp))
+	{
+		oldGame << temp << endl;
+	}
+
+	cout << "Done!" << endl;
 }

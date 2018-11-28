@@ -17,6 +17,10 @@ Player::Player(string nameIn) : Character(nameIn, 5.0)
 void Player::showInventory()
 {
 	cout << this->getName() << "'s Inventory: (Maximum size: " << this->getInventory()->capacity() << ")" << endl;
+	if (this->getInventory()->size() == 0)
+	{
+		cout <<"\tNo Items in inventory currently." << endl;
+	}
 	for (int i = 0; i < this->getInventory()->size(); i++)
 	{
 		cout << "\t" <<  i << ": " << this->getInventory()->at(i)->getName() << endl;
