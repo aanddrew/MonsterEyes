@@ -40,7 +40,12 @@ void Room::showInteractions()
 }
 
 //returns 0 if the interaction remains in this room
-int Room::doInteraction(int)
+// int Room::doInteraction(int)
+// {
+// 	return ref;
+// }
+
+int Room::getRef()
 {
 	return ref;
 }

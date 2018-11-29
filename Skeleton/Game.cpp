@@ -103,7 +103,7 @@ Game::Game():numZones(10)
 				string enemy = enemyNames.getRandomName();
 				enemies[j] = enemy;
 				int len = rand() % 3+4;
-				int dmg = rand() % 4 + 3* i + 1;
+				int dmg = (rand() % 4) + 3* i + 2;
 
 				//this line represents one dungeon -------------
 				outputFile << enemy << "," << len << "," << dmg << endl;
@@ -550,6 +550,135 @@ void Game::playGame()
 				}
 			}
 		}
+		else if(currentDungeon >= 0)
+		{
+			// cout << "we in dungeon " << currentDungeon << endl;
+			// cout << "this dungeon is full of " << 
+			// 		zones[currentZone].getDungeons()->at(currentDungeon)->getRooms()->at(0)->getCharacter()->getName() << endl;
+			// cin >> input;
+			Dungeon * currentDungeonP = zones[currentZone].getDungeons()->at(currentDungeon);
+			string monsterName = currentDungeonP->getRooms()->at(0)->getCharacter()->getName();
+
+			cout << "Welcome to the dungeon of " << monsterName << "s! Prepare to fight!" << endl;
+			cout << "Would you like to: " << endl;
+			cout << "(1) Enter the dungeon?" << endl;
+			cout << "(2) Leave the premises?" << endl;
+
+			cin >> input;
+			choice = stoi(input);
+			if (choice == 1)
+			{
+				//play the dungeon out
+				int dungRoom = 0;
+				bool playerTurn = true;
+				bool inDungeon = true;
+				while (dungRoom < currentDungeonP->getRooms()->size() && inDungeon)
+				{
+					Character * monster = currentDungeonP->getRooms()->at(dungRoom)->getCharacter();
+
+					cout << "-------------------------------------------" << endl;
+					cout << "-------------------------------------------" << endl;
+					cout << "-------------------------------------------" << endl;
+					cout << "You enter a room..." << endl;
+					cout << "... and see a " << monsterName << "!" << endl;
+					while (monster->alive() && p.alive() && inDungeon)
+					{
+						if (playerTurn)
+						{
+							cout << "-------------------------------------------" << endl;
+							cout << "It is your turn..." << endl;
+							cout << "Your health: " << p.getHealth() <<"    "<< monsterName << "'s Health: " << monster->getHealth() << endl;
+							bool playerO = true;
+							do //while (playerO)
+							{
+								cout << "Would you like to: " << endl;
+								cout << "\tAttack? (1)" << endl;
+								cout << "\tFlee? (2)" << endl;
+
+								showPlayerOptions();
+								cin >> input;
+
+								playerO = getPlayerOptions(input);
+								if (!playerO)
+								{
+									//then he attacks or flees
+									choice = stoi(input);
+									switch(choice)
+									{
+										case 1:
+										{
+											int dmg = p.getDamageDealt();
+											cout << "You attacked the " << monsterName << " for " << dmg << " damage!" << endl;
+											monster->setHealth(monster->getHealth()-dmg);
+										}
+										case 2:
+										{
+											//not implemented yet...
+										}
+									}
+								}
+							} while(playerO);
+							
+							playerTurn = !playerTurn;
+						}
+						else
+						{
+							cout << "-------------------------------------------" << endl;
+							cout << monsterName << "'s turn." << endl;
+							cout << "Your health: " << p.getHealth() << "   " << monsterName << "'s Health: " << monster->getHealth() << endl;
+							int dmg = monster->getDamageDealt();
+							cout << monsterName << " attacked you for " << dmg << " damage!" << endl;
+							p.setHealth(p.getHealth()-dmg);
+							playerTurn = !playerTurn;
+						}
+					}
+					playerTurn = true;
+
+					cout << "Congratulations! You beat the room." << endl;
+					int level = zones[currentZone].getLevel();
+					int gold  = rand() % (level*4) + level*2 + 1;
+					int xp = level*40 + (rand() % (level*50));
+					cout << "You earned " << gold << " gold and " << xp << " xp!" << endl;
+					p.setXP(p.getXP()+xp);
+					p.setGold(p.getGold()+gold);
+					if (dungRoom < currentDungeonP->getRooms()->size()-1)
+					{
+						cout << "Would you like to continue? If you don't you will have to restart the dungeon." << endl;
+						cout << "\t(Y)es or (N)o" << endl;
+
+						cin >> input;
+						if (input == "y" || input == "Y")
+						{
+							dungRoom++;
+						}
+						else if (input == "N" || input == "n")
+						{
+							cout << "Okay, better luck next time adventurer!" << endl;
+							inDungeon = false;
+						}
+					}
+					else
+					{
+						dungRoom++;
+					}
+				}
+				if(inDungeon)
+				{
+					cout << "-------------------------------------------" << endl;
+					cout << "|           Congratulations!              |" << endl;
+					cout << "-------------------------------------------" << endl;
+					cout << "You have defeated the " << monsterName << "'s dungeon!" << endl;
+					cout << "-------------------------------------------" << endl;
+					cout << "-------------------------------------------" << endl;
+				}
+			}
+			else
+			{
+				cout << "You leave... " << endl << endl << "Coward." << endl;
+			}
+
+			currentDungeon = -1;
+		}
 		//if the player is in the food shop
 		else if(currentRoom == -2)
 		{
@@ -809,14 +938,16 @@ void Game::playGame()
 							}
 						}
 					}
+					break;
 				}
 				case 2:
 				{
 					currentRoom = -1;
+					break;
 				}
 			}
 		}
-		else if(currentDungeon == -1)
+		else if(currentRoom >= 0 && currentDungeon == -1)
 		{
 			//I will be accessing the current room a lot
 			//this is for readability and my own sanity
@@ -851,6 +982,10 @@ void Game::playGame()
 
 							if (input == "y" || input == "Y")
 							{
+								currentDungeon = currentRoomP->getRef();
+								currentRoom = -1;
+								inRoom = false;
+								break;
 								//this is supposed to start the dungeon loop
 							}
 							if (input == "n" || input == "N")
