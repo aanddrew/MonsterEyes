@@ -677,6 +677,14 @@ void Game::playGame()
 				cout << "You leave... " << endl << endl << "Coward." << endl;
 			}
 
+			int n = p.getLevel();
+			int xpForNextLevel = (n*(n+1) /2) * 1000;
+			if (p.getXP() >= xpForNextLevel)
+			{
+				p.levelUp();
+				cout << "Congratulations! You've reached over " << xpForNextLevel<< " xp and are now level " << p.getLevel() << "!" << endl;
+			}
+
 			currentDungeon = -1;
 		}
 		//if the player is in the food shop
