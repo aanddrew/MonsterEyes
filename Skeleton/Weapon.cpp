@@ -51,7 +51,6 @@ bool Weapon::unequip(Character *c)
 	//back to 1 dmg attacks
 	c->setMaxDamage(1);
 }
-
 string Weapon::getInfo()
 {
 	return name + " does a maximum of " + to_string(maxDamage) + " damage.";

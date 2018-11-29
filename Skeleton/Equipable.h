@@ -26,6 +26,9 @@ public:
 	virtual bool equip(Character*)=0;
 	virtual bool unequip(Character*)=0;
 
+	string getInteraction();
+	void interact(Character*c);
+
 	// virtual string getInfo()=0;
 };
 

@@ -25,3 +25,13 @@ string Item::getInfo()
 {
 	return "Hello";
 }
+
+string Item::getInteraction()
+{
+	return "n/a";
+}
+
+void Item::interact(Character* c)
+{
+
+}

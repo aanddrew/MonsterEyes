@@ -3,6 +3,8 @@
 
 #include <string>
 
+class Character;
+
 using namespace std;
 /*
 This class represents an Item, which is any item that can be stored in the player's inventory
@@ -18,5 +20,7 @@ public:
 	string getName();
 
 	virtual string getInfo();
+	virtual string getInteraction();
+	virtual void interact(Character*);
 };
 #endif

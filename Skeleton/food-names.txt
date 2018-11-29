@@ -1,0 +1,59 @@
+Biscuit
+Burger
+Potato
+Claw
+Apple
+Corn
+Bread
+Cheese
+Jerky
+Beef
+Tuna Sandwich
+Stack of Pancakes
+Liver
+Lobster
+Waffle
+Macaroni
+Pasta
+Spaghetti
+Glass of Milk
+Bacon
+Donut
+Turkey
+Meatloaf
+Chorizo
+Hot Dog
+Salami
+Bologna
+Jar of Peanut Butter
+Eggs
+Rib
+Sushi
+Rice
+Ramen
+Chocolate Bar
+Carton of Ice Cream
+Dumplings
+Noodles
+Apple Pie
+Rabbit Stew
+Lamb
+Kebab
+Yogurt
+Asparagus
+Almonds
+Bagel
+Burrito
+Applesauce
+Cabbage
+Curry
+Cereal
+Chicken
+Celery
+Enchilada
+French Toast
+Toast
+Graham Crackers
+Pizza
+Quesadilla
+Walnuts

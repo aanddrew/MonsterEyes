@@ -47,6 +47,9 @@ public:
 	void showPlayerOptions();
 	bool getPlayerOptions(string);
 
+	void showSaveOptions();
+	bool getSaveOptions(string input);
+
 	void playGame();
 
 	void saveGame();

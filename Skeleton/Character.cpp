@@ -141,3 +141,11 @@ bool Character::alive()
 {
 	return health > 0;
 }
+
+void Character::createWearingItem(Equipable* item)
+{
+	wearingFlags[item->getSlot()] = true;
+	wearing[item->getSlot()] = item;
+
+	cout << this->getWearing()[4]->getName() << endl;
+}

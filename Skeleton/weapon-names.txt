@@ -1,0 +1,31 @@
+Sword
+Katana
+Rapier
+ShortSword
+LongSword
+Maul
+Morning Star
+Mace
+Club
+Flail
+Axe
+Battle Axe
+Hammer
+Lance
+Pike
+Halberd
+Glaive
+Bow
+Longbow
+Crossbow
+Sling
+Rock (Like a big rock)
+Staff
+Quarterstaff
+Sickle
+Shovel
+Hockey Stick
+Wrench
+Dagger
+Knife
+Scythe

@@ -12,3 +12,13 @@ Equipable::Equipable(string nameIn, int slotIn) : Item(nameIn)
 }
 
 int Equipable::getSlot(){return slot;}
+
+string Equipable::getInteraction()
+{
+	return "equip";
+}
+
+void Equipable::interact(Character* c)
+{
+	this->equip(c);
+}

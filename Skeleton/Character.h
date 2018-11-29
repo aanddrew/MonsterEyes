@@ -81,6 +81,8 @@ public:
 	bool isWearing(int);
 
 	bool alive();
+
+	void createWearingItem(Equipable*);
 };
 
 #endif

@@ -34,8 +34,12 @@ bool Armor::equip(Character *c)
 	c->setWearing(this->getSlot(), true);
 
 	//the player is wearing /this/ in the slot
+	// cout << this->getName() << endl;
 	c->getWearing()[this->getSlot()] = this;
 
+	cout << c->isWearing(this->getSlot()) << endl;
+	cout << c->getWearing()[this->getSlot()]->getName() << endl;
+	cout << c->getWearing()[this->getSlot()]->getName() << endl;
 	//erase the item from their inventory now.
 	for (int i = 0; i < c->getInventory()->size(); i++)
 	{

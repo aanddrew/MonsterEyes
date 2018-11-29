@@ -22,8 +22,9 @@ Game::Game():numZones(10)
 	cin >> input;
 	if (input == "L" || input == "l")
 	{
-		//load the game
-		//the game is loaded automatically at the end of this block
+		//load the game --NOT NEEDED IN THIS BLOCK
+		//the game is loaded automatically at the end of the next block
+		//if the player says N then the game will generate a new game file, then load it
 	}
 	else if(input == "N" || input == "n")
 	{
@@ -293,7 +294,7 @@ void Game::loadGame()
 						//Health or Damage
 						int HealthorDamage;
 						int slot;
-						string temp;
+						string temp = "";
 						for (; i < s.length() && s[i] != ','; i++)
 						{
 							name += s[i];
@@ -306,22 +307,25 @@ void Game::loadGame()
 						i++;
 						HealthorDamage = stoi(temp);
 
+						temp = "";
 						if (type == "Armor")
 						{
-							temp == "";
+						
 							for (; i < s.length(); i++)
 							{
 								temp += s[i];
 							}
 							slot = stoi(temp);
 
-							Armor * a = new Armor(name, HealthorDamage, slot);
-							a->equip(&p);
+							Equipable * a = new Armor(name, HealthorDamage, slot);
+							p.setWearing(a->getSlot(), true);
+							p.getWearing()[a->getSlot()] = a;
 						}
 						else
 						{
-							Weapon * w = new Weapon(name, HealthorDamage);
-							w->equip(&p);
+							Equipable * w = new Weapon(name, HealthorDamage);
+							p.setWearing(0,true);
+							p.getWearing()[0] = w;
 						}
 					}
 				}
@@ -439,223 +443,12 @@ void Game::loadGame()
 		// cout << s << endl;
 	}
 }
-
-/*
-Generates the array of zones for the game to use.
-*/
-void Game::generateZones()
-{
-	//this function does nothing right now	
-// 	for (int i = 0; i < 10; i++)
-// 	{
-// 		Zone z(i+1);
-// 		zones[i] = z;
-// 	}
-}
-
-/*
-Changes the zone of the player
-*/
-void Game::changeZone(int zoneNum)
-{
-	if (p.getLevel() >= zones[zoneNum].getLevel())
-	{
-		currentZone = zoneNum;
-	}
-}
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//        LOAD GAME ENDED
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 // void enterRoom();
 // void enterDungeon();
-
-/*
-These are a couple functions to test game functionality.
-There will be a main.cpp and it will call this function
-*/
-void Game::testGame()
-{
-	cout << "I am in zone " << currentZone << endl;
-
-	cout << "My player has " << p.getMaxHealth() << " max health" << endl;
-
-	p.setLevel(2);
-	changeZone(1);
-	cout << "I am now in zone: " << currentZone << endl;
-
-	Armor e("Wood Helm", 4, 4);
-
-	Armor l("Wood Legs", 5, 2);
-
-	Equipable * eq = &e;
-
-	eq->equip(&p);
-	l.equip(&p);
-
-	cout << "My player has " << p.getMaxHealth() << " max health" << endl;
-
-	Weapon w("Bronze sword", 5);
-
-	w.equip(&p);
-
-	cout << p.getDamageDealt() << endl;
-
-	// w.unequip(&p);
-
-	cout << p.getDamageDealt() << endl;
-	cout << (p.getWearing()[0] != NULL) << endl;
-
-	Character john("John", 5.0);
-	string building = "Tavern";
-	string message = "Will you go to the rat's lair for me???";
-	Character *c = &john;
-	Room r(&john, building, message, 2);
-
-	r.showInteractions();
-
-	cout << r.doInteraction(1) << endl;
-
-	p.getInventory()->push_back(&w);
-	p.getInventory()->push_back(&l);
-	p.getInventory()->push_back(&e);
-
-	HealthPot healthPot("Cabbage", 5);
-
-	cout << p.getInventory()->size() << endl;
-
-	p.getInventory()->push_back(&healthPot);
-
-	p.levelUp();
-	cout << p.getMaxHealth() << endl;
-
-	p.setHealth(p.getHealth()-6);
-
-	cout << "Player has " << p.getHealth() << " health" << endl;
-
-	healthPot.consume(&p);
-
-	cout << "Player has " << p.getHealth() << " health" << endl;	
-
-	for (int i = 0; i < p.getInventory()->size(); i++)
-	{
-		cout << p.getInventory()->at(i)->getName() << endl;
-		cout << p.getInventory()->at(i)->getInfo() << endl;
-	}
-
-	p.showInventory();
-}
-
-void Game::testGame2()
-{
-	// Player p("John");
-
-	Weapon sword("Wood sword", 5);
-	Armor helm1("Wood Helm", 5, 4);
-	Armor chest1("Stone chest", 7, 3);
-	Armor legs1("Brone legs", 4, 2);
-	Armor feet1("Leather feet", 3, 1);
-
-	p.levelUp();
-
-	p.getInventory()->push_back(&sword);
-	p.getInventory()->push_back(&helm1);
-	p.getInventory()->push_back(&chest1);
-	p.getInventory()->push_back(&legs1);
-	p.getInventory()->push_back(&feet1);
-
-	sword.equip(&p);
-	helm1.equip(&p);
-	chest1.equip(&p);
-	legs1.equip(&p);
-	feet1.equip(&p);
-
-	sword.unequip(&p);
-
-	chest1.unequip(&p);
-
-	p.showInventory();
-
-	p.showInfo();
-}
-
-void Game::testGame3()
-{
-	// Player p("John");
-
-	Character j("jeff", 5);
-	Room r(&j, "tavern", "You have to go to the rat's lair", 5);
-
-	cout << r.getMessage() << endl;
-
-	Weapon sword("Wood sword", 5);
-	Armor helm1("Wood Helm", 5, 4);
-	Armor chest1("Stone chest", 7, 3);
-	Armor legs1("Brone legs", 4, 2);
-	Armor feet1("Leather feet", 3, 1);
-
-	p.levelUp();
-
-	p.getInventory()->push_back(&sword);
-	p.getInventory()->push_back(&helm1);
-	p.getInventory()->push_back(&chest1);
-	p.getInventory()->push_back(&legs1);
-	p.getInventory()->push_back(&feet1);
-
-	sword.equip(&p);
-	helm1.equip(&p);
-	chest1.equip(&p);
-	legs1.equip(&p);
-	feet1.equip(&p);
-
-	sword.unequip(&p);
-
-	chest1.unequip(&p);
-
-	p.showInventory();
-
-	p.showInfo();
-}
-
-void Game::testGame4()
-{
-	p.showInfo();
-
-	//this prints out the information about the dungeons as usable by the game
-	// for (int z = 0; z < numZones; z++)
-	// {
-	// 	cout << " -------- Zone " << z << " -----" << endl;
-	// 	for (int i = 0; i < zones[z].getNumRooms(); i++)
-	// 	{
-	// 		string mName = zones[z].getDungeons()->at(i)->getMonsterName();
-	// 		cout << "This dungeon has " << 
-	// 				zones[z].getDungeons()->at(i)->getRooms()->capacity() <<
-	// 				" rooms full of " << mName << "s " << "that do " << 
-	// 				zones[z].getDungeons()->at(i)->getRooms()->at(0)->getCharacter()->getMaxDamage() <<
-	// 				" max damage" <<
-	// 				" that have " << zones[z].getDungeons()->at(i)->getRooms()->at(0)->getCharacter()->getMaxHealth() <<
-	// 				" max health" << endl;
-	// 	}
-	// }	
-
-	//now lets do the buildings...
-	for (int z = 0; z < numZones; z++)
-	{
-		cout << " -------- Zone " << z << " -----" << endl;
-		for (int i = 0; i < zones[z].getNumRooms(); i++)
-		{
-			cout << zones[z].getRooms()->at(i)->getCharacter()->getName() <<
-			"'s " << zones[z].getRooms()->at(i)->getBuilding() << 
-			" sends you to a dungeon full of " <<
-			zones[z].getDungeons()->at(i)->getMonsterName() << "s" <<endl;
-
-			cout << "\t";
-			cout << "These " << zones[z].getDungeons()->at(i)->getMonsterName() << "s" <<
-				 	" do up to " << zones[z].getDungeons()->at(i)->getRooms()->at(0)->getCharacter()->getMaxDamage() <<
-				 	" damage" << endl;
-			cout << "\t";
-			cout << "If one of them attacked you right now it would do " <<
-				 zones[z].getDungeons()->at(i)->getRooms()->at(0)->getCharacter()->getDamageDealt() << " damage." << endl;
-		}
-	}
-}
 
 void Game::playGame()
 {
@@ -664,6 +457,9 @@ void Game::playGame()
 
 	cout << "Welcome to Monster Eyes " << p.getName() << "!" << endl;
 	string input;
+
+	// cout << p.isWearing(4) << endl;
+
 	int choice = 0;
 	while(p.alive() && input != "Q")
 	{
@@ -676,10 +472,11 @@ void Game::playGame()
 			cout << "\tGo to the previous zone? (2)" << endl;
 			cout << "\tGo to the next zone? (3)" << endl;
 			showPlayerOptions();
+			showSaveOptions();
 
 			cin >> input;
 
-			if(!getPlayerOptions(input))
+			if(!getPlayerOptions(input) && !getSaveOptions(input))
 			{
 				choice = stoi(input);
 				switch(choice)
@@ -696,12 +493,28 @@ void Game::playGame()
 						}
 						cout << "\t(" << i << ")" << " None?" << endl;
 
+						cout << "\t(G) " << zones[currentZone].getFoodShop()->getCharacter()->getName() << "'s "
+								 << zones[currentZone].getFoodShop()->getBuilding() << "?" << endl;
+						cout << "\t(B) " << zones[currentZone].getItemShop()->getCharacter()->getName() << "'s "
+								 << zones[currentZone].getItemShop()->getBuilding() << "?" << endl;
+
 						cin >> input;
 
-						choice = stoi(input);
-						if (choice < i)
+						if (input == "g" || input == "G")
 						{
-							currentRoom = choice;	
+							currentRoom = -2;
+						}
+						else if (input == "b" || input == "B")
+						{
+							currentRoom = -3;
+						}
+						else
+						{
+							choice = stoi(input);
+							if (choice < i)
+							{
+								currentRoom = choice;	
+							}
 						}
 						break;
 					}
@@ -734,6 +547,272 @@ void Game::playGame()
 						}
 						break;
 					}
+				}
+			}
+		}
+		//if the player is in the food shop
+		else if(currentRoom == -2)
+		{
+			cout << zones[currentZone].getFoodShop()->getCharacter()->getName() << " says: " << endl;
+			cout << "\t" << zones[currentZone].getFoodShop()->getMessage() << endl;
+
+			cout << "Would you like to: " << endl;
+			cout << "\t(1) Buy some groceries?" << endl;
+			cout << "\t(2) Leave the building?" << endl;
+			cin >> input;
+
+			choice = stoi(input);
+			switch(choice)
+			{
+				case 1:
+				{
+					cout << "Here is our selection: " << endl;
+					int i;
+					int numFoods = 10;
+					string names[numFoods];
+					int healths[numFoods];
+					int prices[numFoods];
+
+					NameGenerator foodNames("food-names.txt");
+
+					for (i=0; i < numFoods; i++)
+					{
+						names[i] = foodNames.getRandomName();
+						healths[i] = rand() % ((zones[currentZone].getLevel()+1)*2) + 1;
+						prices[i] = healths[i] + (rand()%3)*zones[currentZone].getLevel();
+						cout << "\t(" << i << ") " << names[i] << " [" << healths[i] << " health]" << " - " << prices[i] << " gold." << endl;
+					}
+					cout << "\t(" << i << ") None?" << endl;
+					cin >> input;
+					choice = stoi(input);
+					if (choice != i)
+					{
+						if(p.getGold() < prices[choice])
+						{
+							cout << "You don't have enough gold to buy that." << endl;
+						}
+						else if(p.getInventory()->size() == p.getInventory()->capacity())
+						{
+							cout << "Your inventory is full!" << endl;
+						}
+						else
+						{
+							p.setGold(p.getGold()-prices[choice]);
+							HealthPot * h = new HealthPot(names[choice], healths[choice]);
+							p.getInventory()->push_back(h);
+							cout << "You just bought: " << names[choice] << " for " << prices[choice] << " gold." << endl;
+
+						}
+					}
+					break;
+				}
+				case 2:
+				{
+					currentRoom = -1;
+					break;
+				}
+			}
+
+		}
+		//if the player is in the blacksmith shop
+		else if(currentRoom == -3)
+		{
+			cout << zones[currentZone].getItemShop()->getCharacter()->getName() << " says: " << endl;
+			cout << "\t" << zones[currentZone].getItemShop()->getMessage() << endl;
+
+			cout << "Would you like to: " << endl;
+			cout << "\t(1) Buy some Armor/Weapons?" << endl;
+			cout << "\t(2) Leave the building?" << endl;
+			cin >> input;
+
+			choice = stoi(input);
+			switch(choice)
+			{
+				case 1:
+				{
+					int numItems = 10;
+					int numWeps = rand() % (numItems -5) + 1;
+					int numArms = 10-numWeps;
+					NameGenerator wepNamesG("weapon-names.txt");
+
+					//get a list of material names
+					ifstream matFile("material-names.txt");
+					string matNames[10];
+					for (int i = 0; i < 10; i++)
+					{
+						getline(matFile, matNames[i]);
+					}
+
+					string wepNames[numWeps];
+					int wepDamages[numWeps];
+
+					for (int i = 0; i < numWeps; i++)
+					{
+						string matName;
+						//levesl start at 1 go to-> 10
+						if (currentZone != numZones-1)
+						{
+							matName = matNames[(zones[currentZone].getLevel()-1) + rand()%2];
+						}
+						else
+						{
+							matName = matNames[(zones[currentZone].getLevel()-1)];
+						}
+						string wepName = matName + " " + wepNamesG.getRandomName();
+						wepNames[i] = wepName;
+						wepDamages[i] = rand() % (zones[currentZone].getLevel()*4) + rand() % zones[currentZone].getLevel() + 1;
+						// cout << wepNames[i] << " " << wepDamages[i] << endl;
+					}
+
+					string armNames[numArms];
+					int armHealths[numArms];
+					int armSlots[numArms];
+
+					for (int i = 0; i < numArms; i++)
+					{
+						string matName;
+						//levesl start at 1 go to-> 10
+						if (currentZone != numZones-1)
+						{
+							matName = matNames[(zones[currentZone].getLevel()-1) + rand()%2];
+						}
+						else
+						{
+							matName = matNames[(zones[currentZone].getLevel()-1)];
+						}
+
+						string armName = matName + " ";
+
+						int slot = rand()%4 + 1;
+
+						switch(slot)
+						{
+							case 1:
+							{
+								int x = rand()%3;
+								switch(x)
+								{
+									case 0: armName += "Boots";
+										break;
+									case 1: armName += "Shoes";
+										break;
+									case 2: armName += "Sandals";
+										break;
+								}
+								break;
+							}
+							case 2:
+							{
+								int x = rand()%3;
+								switch(x)
+								{
+									case 0: armName += "Legs";
+										break;
+									case 1: armName += "Pants";
+										break;
+									case 2: armName += "Trousers";
+										break;
+								}
+								break;
+							}
+							case 3:
+							{
+								int x = rand()%3;
+								switch(x)
+								{
+									case 0: armName += "Shirt";
+										break;
+									case 1: armName += "Chest";
+										break;
+									case 2: armName += "Jacket";
+										break;
+								}
+								break;
+							}
+							case 4:
+							{
+								int x = rand()%3;
+								switch(x)
+								{
+									case 0: armName += "Hat";
+										break;
+									case 1: armName += "Helm";
+										break;
+									case 2: armName += "Crown";
+										break;
+								}
+								break;
+							}
+						}
+						armSlots[i] = slot;
+						armNames[i] = armName;
+						armHealths[i] = rand() % (zones[currentZone].getLevel()*4) + 1;
+
+						// cout << armNames[i] << " " << armHealths[i] << " " << armSlots[i] << endl;
+					}
+
+					int prices[numItems];
+					for (int i = 0; i < numItems; i++)
+					{
+						if (i < numWeps)
+						{
+							prices[i] = rand() % (4*zones[currentZone].getLevel()) + wepDamages[i];
+						}
+						else
+						{
+							prices[i] = rand() % (4*zones[currentZone].getLevel()) + armHealths[i-numWeps];
+						}
+					}
+
+					int i;
+					for (i = 0; i < numItems; i++)
+					{
+						if (i < numWeps)
+						{
+							cout << "(" << i << ") " << wepNames[i] << " [" << wepDamages[i] << " damage]";
+						}
+						else
+						{
+							cout << "(" << i << ") " << armNames[i-numWeps] << " [" << armHealths[i-numWeps] << " health]";
+						}
+						cout << " - " << prices[i] << " gold" << endl;
+					}
+					cout << "(" << i << ") None?" << endl;
+					cout << "Which item would you like to purchase?" << endl;
+					cin >> input;
+
+					choice = stoi(input);
+					if (choice != i)
+					{
+						if(p.getGold() < prices[choice])
+						{
+							cout << "You don't have enough gold to buy that." << endl;
+						}
+						else if(p.getInventory()->size() == p.getInventory()->capacity())
+						{
+							cout << "Your inventory is full!" << endl;
+						}
+						else
+						{
+							p.setGold(p.getGold()-prices[choice]);
+							if (choice < numWeps)
+							{
+								Weapon * w = new Weapon(wepNames[choice], wepDamages[choice]);
+								p.getInventory()->push_back(w);
+								cout << "You just bought: " << wepNames[choice] << " for " << prices[choice] << " gold." << endl;
+							}
+							else
+							{
+								Armor * a = new Armor(armNames[choice-numWeps], armHealths[choice-numWeps], armSlots[choice-numWeps]);
+								p.getInventory()->push_back(a);
+								cout << "You just bought: " << armNames[choice-numWeps] << " for " << prices[choice] << " gold." << endl;
+							}
+						}
+					}
+				}
+				case 2:
+				{
+					currentRoom = -1;
 				}
 			}
 		}
@@ -807,33 +886,6 @@ void Game::playGame()
 //playGame() ends
 }
 
-void Game::showPlayerOptions()
-{
-	cout << "\tShow your stats? (S)" << endl;
-	cout << "\tShow your Inventory? (I)" << endl;
-	cout << "\tSave the game? (SA)" << endl;
-}
-
-bool Game::getPlayerOptions(string input)
-{
-	if (input == "S" || input == "s")
-	{
-		p.showInfo();
-		return true;
-	}
-	else if(input == "I" || input == "i")
-	{
-		p.showInventory();
-		return true;
-	}
-	else if(input == "SA" || input == "sa")
-	{
-		saveGame();
-		return true;
-	}
-	return false;
-}
-
 void Game::saveGame()
 {
 	ifstream inputFile("Game.txt"); //File to read from
@@ -898,7 +950,23 @@ void Game::saveGame()
 	{
 		if (p.isWearing(k))
 		{
+			Item * item = p.getWearing()[k];
 
+			if (dynamic_cast<Armor*>(item) != nullptr)
+			{
+				Armor * a = dynamic_cast<Armor*>(item);
+				outputFile << "Armor" << ",";
+				outputFile << a->getName() << ",";
+				outputFile << a->getExtraHealth() << ",";
+				outputFile << a->getSlot() << endl;
+			}
+			else if (dynamic_cast<Weapon*>(item) != nullptr)
+			{
+				Weapon * w = dynamic_cast<Weapon*>(item);
+				outputFile << "Weapon,";
+				outputFile << w->getName() << ",";
+				outputFile << w->getMaxDamage() << endl;
+			}
 		}
 		else
 		{
@@ -935,4 +1003,51 @@ void Game::saveGame()
 	}
 
 	cout << "Done!" << endl;
+}
+
+void Game::showPlayerOptions()
+{
+	cout << "\tShow your stats? (S)" << endl;
+	cout << "\tShow your Inventory? (I)" << endl;
+}
+
+void Game::showSaveOptions()
+{
+	cout << "\tSave the game? (SA)" << endl;
+}
+
+bool Game::getSaveOptions(string input)
+{
+	if (input == "sa" || input == "SA")
+	{
+		saveGame();
+		return true;
+	}
+	return false;
+}
+
+bool Game::getPlayerOptions(string input)
+{
+	if (input == "S" || input == "s")
+	{
+		p.showInfo();
+		return true;
+	}
+	else if(input == "I" || input == "i")
+	{
+		p.showInventory();
+		return true;
+	}
+	return false;
+}
+
+/*
+Changes the zone of the player
+*/
+void Game::changeZone(int zoneNum)
+{
+	if (p.getLevel() >= zones[zoneNum].getLevel())
+	{
+		currentZone = zoneNum;
+	}
 }

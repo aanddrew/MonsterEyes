@@ -17,7 +17,18 @@ bool HealthPot::consume(Character* c)
 		c->setHealth(c->getMaxHealth());
 	}
 	//otherwise just add the health from the pot
-	c->setHealth(c->getHealth() + health);
+	else
+	{
+		c->setHealth(c->getHealth() + health);
+	}
+
+	for (int i = 0; i < c->getInventory()->size(); i++)
+	{
+		if (c->getInventory()->at(i) == this)
+		{
+			c->getInventory()->erase(c->getInventory()->begin()+i);
+		}
+	}
 }
 
 int HealthPot::getHealth()
@@ -27,5 +38,5 @@ int HealthPot::getHealth()
 
 string HealthPot::getInfo()
 {
-	return "Health Potion heals restores " + to_string(health) + " health to you.";
+	return this->getName() + " restores " + to_string(health) + " health to you.";
 }

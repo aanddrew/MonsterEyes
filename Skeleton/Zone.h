@@ -20,6 +20,9 @@ private:
 	vector<Room*> rooms;
 	vector<Dungeon*> dungeons;
 
+	Room* foodShop;
+	Room* itemShop;
+
 	int currentRoom;
 	int currentDungeon;
 public:
@@ -36,6 +39,9 @@ public:
 
 	vector<Dungeon*>* getDungeons();
 	vector<Room*>* getRooms();
+
+	Room* getFoodShop();
+	Room* getItemShop();
 
 	void enterDungeon(int);
 

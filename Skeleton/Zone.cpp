@@ -1,5 +1,7 @@
 #include "Zone.h"
 
+#include "NameGenerator.h"
+
 using namespace std;
 
 Zone::Zone()
@@ -13,6 +15,13 @@ Zone::Zone(int levelIn, int numRoomsIn, int numDungeonsIn)
 	numDungeons = numDungeonsIn;
 	level = levelIn;
 	dungeons.reserve(numDungeons);
+
+	NameGenerator ng("first-names.txt");
+	Character * c = new Character(ng.getRandomName(),5);
+	foodShop = new Room(c, "groceries", "Welcome to my grocery store! You can get all kinds of food here.", -1);
+
+	Character *bc = new Character(ng.getRandomName(),5);
+	itemShop = new Room(bc, "smithing", "Welcome to the shop. I'm your guy for Armor and Weapons.", -1);
 }
 
 vector<Dungeon*>* Zone::getDungeons()
@@ -23,6 +32,16 @@ vector<Dungeon*>* Zone::getDungeons()
 vector<Room*>* Zone::getRooms()
 {
 	return &rooms;
+}
+
+Room* Zone::getFoodShop()
+{
+	return foodShop;
+}
+
+Room* Zone::getItemShop()
+{
+	return itemShop;
 }
 
 int Zone::getNumRooms()

@@ -1,0 +1,10 @@
+Plastic
+Wood
+Bronze
+Iron
+Silver
+Platinum
+Palladium
+Gold
+Diamond
+Black Matter

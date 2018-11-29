@@ -20,6 +20,8 @@ public:
 	Consumable(string);
 
 	virtual bool consume(Character*)=0;
+	string getInteraction();
+	void interact(Character*);
 };
 
 #endif

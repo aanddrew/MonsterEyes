@@ -21,9 +21,33 @@ void Player::showInventory()
 	{
 		cout <<"\tNo Items in inventory currently." << endl;
 	}
-	for (int i = 0; i < this->getInventory()->size(); i++)
+	int i;
+	for (i = 0; i < this->getInventory()->size(); i++)
 	{
 		cout << "\t" <<  i << ": " << this->getInventory()->at(i)->getName() << endl;
+	}
+	
+
+	if (this->getInventory()->size() != 0)
+	{
+		cout << "Select an item to interact with. (E to exit)" << endl;
+		string temp;
+		cin >> temp;
+		if (temp != "E" && temp != "e")
+		{
+			int choice = stoi(temp);
+			cout << "\t" << this->getInventory()->at(choice)->getInfo() << endl;
+			cout << "\tWould you like to " << this->getInventory()->at(choice)->getInteraction() << " " << 
+					this->getInventory()->at(choice)->getName() << "?" << endl;
+			cout << "\t(Y)es or (N)o?" << endl;
+
+			string input;
+			cin >> input;
+			if (input == "Y" || input == "y")
+			{
+				this->getInventory()->at(choice)->interact(this);
+			}
+		}
 	}
 }
 
@@ -44,14 +68,38 @@ void Player::showInfo()
 	cout << "\t" << "Current Health: " << this->getHealth() << endl;
 	cout << "\t" << "Max Health: " << this->getMaxHealth() << endl;
 	cout << "\t" << "Gold: " << this->getGold() << endl;
+	cout << "\tMax Damage: " << this->getMaxDamage() << endl;
 	cout << "\t" << "Equipped:" << endl;
 	for (int i = 0; i < 5; i++)
 	{
 		//if the player is wearing something in that slot ~print it
 		if (this->isWearing(i))
-			cout << "\t\t" << this->getWearing()[i]->getName() << endl; 	
+			cout << "\t\t ("<< i <<") " << this->getWearing()[i]->getName() << endl; 	
 		else
-			cout << "\t\t-N/a-" << endl;
+			cout << "\t\t ("<<i<<") -N/a-" << endl;
 	}
-	cout << "\tMax Damage: " << this->getMaxDamage() << endl;
+
+	bool isEquipped = false;
+	for (int i = 0; i < 5; i++)
+	{
+		if (this->isWearing(i)) isEquipped= true;
+	}
+	if (isEquipped)
+	{
+		cout << "Would you like to unequip any items?" << endl;
+		cout << "\t(Y)es or (N)o?" << endl;
+		string input;
+		cin >> input;
+
+		if (input == "Y" || input == "y")
+		{
+			cout << "Which one? (Look at the numbers) (N to go back)" << endl;
+			cin >> input;
+			if (input != "N" && input != "n")
+			{
+				int choice = stoi(input);
+				this->getWearing()[choice]->unequip(this);
+			}
+		}
+	}
 }

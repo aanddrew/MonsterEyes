@@ -1,5 +1,5 @@
 G
-5
+0
 -1
 -1
 endG
@@ -7,14 +7,14 @@ P
 jeff
 1
 0
-10
-10
-10
-1
+0
+16
+16
+3
 I
-Armor,Wood Helm,5,4
-Weapon,Bronze Sword,3
-HealthPot,Cabbage,6
+HealthPot,Carton of Ice Cream,3
+HealthPot,Ramen,4
+NULL
 NULL
 NULL
 NULL
@@ -34,340 +34,340 @@ NULL
 NULL
 endI
 W
+Weapon,Bronze Sword,3
 NULL
 NULL
 NULL
-NULL
-NULL
+Armor,Wood Helm,6,4
 endW
 endP
 Z
 1
 D
-Undead,4,2
-Dragon,5,4
-Golem,4,3
-Manticore,6,4
+Elephant,6,2
+Gnome,6,2
+Snake,4,2
+Orc,4,1
 endD
 B
-Winonah,Shack,Would you please go kill all those Undeads in their Lair?,0
-Ulla,Library,Can you go beat up those Dragons for me?,1
-Katee,Restaurant,Would you please go kill all those Golems in their Lair?,2
-Matty,Mine,Would you please go kill all those Manticores in their Lair?,3
+Janeen,Bar,Will you defeat the house of Elephants for me?,0
+Cal,Stables,Can you go beat up those Gnomes for me?,1
+Catina,Well,Will you defeat the house of Snakes for me?,2
+Janette,Restaurant,Will you defeat the house of Orcs for me?,3
 endB
 endZ
 Z
 2
 D
-Wolf,5,6
-Dragon,5,6
-Gnome,5,6
-Ghost,6,6
-Leprechaun,4,7
-Leprechaun,6,7
+Vampire,4,4
+Ninja,4,4
+Monkey,5,7
+Bat,6,5
+Harpy,5,5
+Tiger,6,7
 endD
 B
-Mil,Inn,Can you go beat up those Wolfs for me?,0
-Tiphanie,Bar,Would you please go kill all those Dragons in their Lair?,1
-Angelle,Barn,Would you please go kill all those Gnomes in their Lair?,2
-Zandra,Tavern,Can you go beat up those Ghosts for me?,3
-Brunhilde,Stables,Will you defeat the house of Leprechauns for me?,4
-Roxi,Restaurant,Would you please go kill all those Leprechauns in their Lair?,5
+Mora,Farm,Would you please go kill all those Vampires in their Lair?,0
+Gilbertine,Mine,Can you go beat up those Ninjas for me?,1
+Alysia,Bar,Will you defeat the house of Monkeys for me?,2
+Claudia,Vending,Will you defeat the house of Bats for me?,3
+Sidonnie,Pub,Will you defeat the house of Harpys for me?,4
+Sharlene,Stables,Will you defeat the house of Tigers for me?,5
 endB
 endZ
 Z
 3
 D
-Golem,4,10
-Hound,4,8
-Demon,6,8
-Owl,4,7
-Rat,5,8
-Ghost,6,9
-Hound,4,7
-Eagle,4,7
+Phoenix,5,10
+Gnome,4,7
+Bat,4,9
+Demon,6,10
+Witch,5,8
+Bat,4,9
+Boar,5,8
+Nymph,4,9
 endD
 B
-Melany,Well,Will you defeat the house of Golems for me?,0
-Emilee,Cottage,Will you defeat the house of Hounds for me?,1
-Fernande,Bar,Can you go beat up those Demons for me?,2
-Jennine,Barn,Would you please go kill all those Owls in their Lair?,3
-Lyda,Well,Would you please go kill all those Rats in their Lair?,4
-Idalia,Shack,Would you please go kill all those Ghosts in their Lair?,5
-Betteanne,Well,Can you go beat up those Hounds for me?,6
-Florry,Mine,Will you defeat the house of Eagles for me?,7
+Arlie,Bar,Will you defeat the house of Phoenixs for me?,0
+Jeanelle,Warehouse,Can you go beat up those Gnomes for me?,1
+Hanni,Granary,Can you go beat up those Bats for me?,2
+Dorelia,Stables,Can you go beat up those Demons for me?,3
+Letitia,Granary,Can you go beat up those Witchs for me?,4
+Alfreda,Warehouse,Can you go beat up those Bats for me?,5
+Christian,Stables,Would you please go kill all those Boars in their Lair?,6
+Fifi,Farm,Will you defeat the house of Nymphs for me?,7
 endB
 endZ
 Z
 4
 D
-Owl,5,10
-Gnome,5,10
-Panther,4,13
-Giant,4,11
-Spider,4,12
-Chicken,6,12
-Snake,4,11
-Bat,5,10
-Gorilla,4,11
-Skeleton,4,10
+Boar,5,12
+Witch,4,13
+Zombie,6,10
+Bandit,4,11
+Crab,6,12
+Lion,4,12
+Ogre,5,12
+Wyvern,4,11
+Kobold,5,11
+Witch,4,13
 endD
 B
-Elbertina,Barn,Can you go beat up those Owls for me?,0
-Mara,Barn,Will you defeat the house of Gnomes for me?,1
-Korie,Well,Can you go beat up those Panthers for me?,2
-Tera,Farm,Can you go beat up those Giants for me?,3
-Roselle,Warehouse,Would you please go kill all those Spiders in their Lair?,4
-Lilla,Granary,Would you please go kill all those Chickens in their Lair?,5
-Faydra,Inn,Would you please go kill all those Snakes in their Lair?,6
-Mirna,Restaurant,Will you defeat the house of Bats for me?,7
-Nollie,Granary,Can you go beat up those Gorillas for me?,8
-Riki,Inn,Would you please go kill all those Skeletons in their Lair?,9
+Caria,Granary,Will you defeat the house of Boars for me?,0
+Clemmie,Bar,Can you go beat up those Witchs for me?,1
+Anne-Corinne,Bar,Can you go beat up those Zombies for me?,2
+Eran,Barn,Would you please go kill all those Bandits in their Lair?,3
+Cassandra,Vending,Can you go beat up those Crabs for me?,4
+Charita,Well,Can you go beat up those Lions for me?,5
+Alanah,Granary,Will you defeat the house of Ogres for me?,6
+Katharyn,Tavern,Can you go beat up those Wyverns for me?,7
+Estel,Restaurant,Can you go beat up those Kobolds for me?,8
+Henrieta,Restaurant,Can you go beat up those Witchs for me?,9
 endB
 endZ
 Z
 5
 D
-Witch,4,15
-Ghost,5,16
-Demon,6,15
-Kobold,5,14
-Harpy,4,15
-Bandit,6,15
-Wolf,4,15
-Nymph,4,15
-Owl,5,13
-Dryad,5,14
-Banshee,5,15
-Panther,4,16
+Zombie,5,15
+Crab,4,14
+Tiger,4,14
+Zombie,6,13
+Demon,5,15
+Witch,5,13
+Rat,4,13
+Vampire,6,14
+Owl,5,16
+Troll,5,15
+Witch,4,14
+Manticore,4,13
 endD
 B
-Orel,Tavern,Can you go beat up those Witchs for me?,0
-Cele,Restaurant,Will you defeat the house of Ghosts for me?,1
-Gretna,Library,Will you defeat the house of Demons for me?,2
-Beverly,Hall,Would you please go kill all those Kobolds in their Lair?,3
-Glyn,Inn,Will you defeat the house of Harpys for me?,4
-Garland,Restaurant,Will you defeat the house of Bandits for me?,5
-Anallese,Hall,Can you go beat up those Wolfs for me?,6
-Gael,Vending,Will you defeat the house of Nymphs for me?,7
-Teddy,Mine,Would you please go kill all those Owls in their Lair?,8
-Monique,Pub,Would you please go kill all those Dryads in their Lair?,9
-Victoria,Cottage,Would you please go kill all those Banshees in their Lair?,10
-Trixi,Shack,Will you defeat the house of Panthers for me?,11
+Audie,Cottage,Will you defeat the house of Zombies for me?,0
+Jenna,Tavern,Will you defeat the house of Crabs for me?,1
+Chrysa,Bar,Will you defeat the house of Tigers for me?,2
+Jeanine,Shack,Can you go beat up those Zombies for me?,3
+Catharina,Mine,Would you please go kill all those Demons in their Lair?,4
+Mariska,Bar,Would you please go kill all those Witchs in their Lair?,5
+Riannon,Hall,Can you go beat up those Rats for me?,6
+Reggi,Restaurant,Will you defeat the house of Vampires for me?,7
+Emili,Mine,Will you defeat the house of Owls for me?,8
+Davine,Stables,Will you defeat the house of Trolls for me?,9
+Ardenia,Farm,Would you please go kill all those Witchs in their Lair?,10
+Bambie,Pub,Will you defeat the house of Manticores for me?,11
 endB
 endZ
 Z
 6
 D
-Undead,4,16
-Leprechaun,4,19
-Bat,6,19
-Troll,6,18
-Panther,4,19
-Elephant,6,16
-Gnome,6,16
-Tiger,4,16
-Bat,6,17
-Harpy,4,17
-Kobold,6,16
-Wyvern,5,16
-Wolf,4,17
-Golem,4,16
+Witch,4,19
+Undead,6,18
+Snake,4,16
+Owl,5,17
+Dragon,6,19
+Ogre,6,18
+Leprechaun,6,16
+Wolf,5,19
+Chicken,6,16
+Orc,6,16
+Skeleton,4,19
+Zombie,4,19
+Elf,6,18
+Centaur,6,18
 endD
 B
-Giorgia,Library,Would you please go kill all those Undeads in their Lair?,0
-Emilie,Farm,Can you go beat up those Leprechauns for me?,1
-Laraine,Inn,Can you go beat up those Bats for me?,2
-Aryn,Farm,Will you defeat the house of Trolls for me?,3
-Chloris,Well,Would you please go kill all those Panthers in their Lair?,4
-Corette,Hall,Can you go beat up those Elephants for me?,5
-Audrey,Hall,Will you defeat the house of Gnomes for me?,6
-Cherin,Inn,Would you please go kill all those Tigers in their Lair?,7
-Tawnya,Granary,Will you defeat the house of Bats for me?,8
-Tricia,Restaurant,Can you go beat up those Harpys for me?,9
-Maggee,Stables,Would you please go kill all those Kobolds in their Lair?,10
-Ardith,Barn,Can you go beat up those Wyverns for me?,11
-Bird,Library,Would you please go kill all those Wolfs in their Lair?,12
-Misty,Vending,Will you defeat the house of Golems for me?,13
+Lark,Hall,Would you please go kill all those Witchs in their Lair?,0
+Tamara,Vending,Can you go beat up those Undeads for me?,1
+Maddalena,Shack,Can you go beat up those Snakes for me?,2
+Tildi,Pub,Will you defeat the house of Owls for me?,3
+Ardelis,Hall,Will you defeat the house of Dragons for me?,4
+Linnell,Cottage,Will you defeat the house of Ogres for me?,5
+Reiko,Restaurant,Will you defeat the house of Leprechauns for me?,6
+Sissy,Granary,Can you go beat up those Wolfs for me?,7
+Annette,Granary,Can you go beat up those Chickens for me?,8
+Ag,Pub,Will you defeat the house of Orcs for me?,9
+Grissel,Barn,Would you please go kill all those Skeletons in their Lair?,10
+Barbette,Farm,Can you go beat up those Zombies for me?,11
+Gerrilee,Farm,Will you defeat the house of Elfs for me?,12
+Fredra,Tavern,Can you go beat up those Centaurs for me?,13
 endB
 endZ
 Z
 7
 D
-Witch,5,22
-Crab,5,21
-Spider,6,20
-Gnome,4,21
-Wyvern,6,19
-Centaur,4,22
-Zombie,4,19
-Bat,4,22
-Harpy,5,19
-Tiger,4,19
-Bear,4,22
-Manticore,5,22
-Gnome,4,19
-Dryad,5,21
-Gnome,4,22
-Skeleton,4,21
+Pixie,6,20
+Orc,5,21
+Centaur,5,21
+Ogre,6,22
+Gnome,6,19
+Ghost,6,20
+Wyvern,6,22
+Nymph,4,20
+Demon,4,20
+Gorilla,4,22
+Crab,4,21
+Skeleton,6,21
+Demon,4,22
+Pixie,5,19
+Snake,6,19
+Chicken,6,21
 endD
 B
-Kayla,Barn,Will you defeat the house of Witchs for me?,0
-Lida,Mine,Will you defeat the house of Crabs for me?,1
-Holly,Tavern,Will you defeat the house of Spiders for me?,2
-Maddy,Cottage,Will you defeat the house of Gnomes for me?,3
-Katine,Warehouse,Can you go beat up those Wyverns for me?,4
-Ermentrude,Restaurant,Will you defeat the house of Centaurs for me?,5
-Zilvia,Mine,Can you go beat up those Zombies for me?,6
-Bill,Farm,Would you please go kill all those Bats in their Lair?,7
-Sue,Inn,Can you go beat up those Harpys for me?,8
-Kassi,Farm,Would you please go kill all those Tigers in their Lair?,9
-Melicent,Inn,Will you defeat the house of Bears for me?,10
-Dynah,Restaurant,Will you defeat the house of Manticores for me?,11
-Marni,Stables,Can you go beat up those Gnomes for me?,12
-Tybi,Inn,Will you defeat the house of Dryads for me?,13
-Lee,Barn,Would you please go kill all those Gnomes in their Lair?,14
-Viv,Pub,Would you please go kill all those Skeletons in their Lair?,15
+Sheeree,Tavern,Will you defeat the house of Pixies for me?,0
+Mersey,Barn,Can you go beat up those Orcs for me?,1
+Yoshiko,Library,Will you defeat the house of Centaurs for me?,2
+Shoshana,Shack,Will you defeat the house of Ogres for me?,3
+Arlee,Hall,Would you please go kill all those Gnomes in their Lair?,4
+Buffy,Restaurant,Would you please go kill all those Ghosts in their Lair?,5
+Ibbie,Warehouse,Would you please go kill all those Wyverns in their Lair?,6
+Elka,Restaurant,Can you go beat up those Nymphs for me?,7
+Gertrudis,Bar,Will you defeat the house of Demons for me?,8
+Deena,Warehouse,Will you defeat the house of Gorillas for me?,9
+Marilin,Shack,Would you please go kill all those Crabs in their Lair?,10
+Kerstin,Vending,Would you please go kill all those Skeletons in their Lair?,11
+Nelle,Well,Will you defeat the house of Demons for me?,12
+Susy,Shack,Will you defeat the house of Pixies for me?,13
+Marlie,Library,Can you go beat up those Snakes for me?,14
+Liv,Mine,Would you please go kill all those Chickens in their Lair?,15
 endB
 endZ
 Z
 8
 D
-Centaur,5,25
-Undead,6,25
-Turtle,4,23
-Tiger,5,23
-Ogre,4,24
-Crab,5,22
-Goblin,6,24
-Bat,5,23
-Dryad,5,22
-Ghoul,6,22
-Boar,6,22
-Gnome,4,25
-Ghoul,5,22
-Orc,5,24
-Ant,6,25
-Phoenix,5,23
-Owl,6,24
-Owl,6,24
+Manticore,4,22
+Elephant,5,22
+Witch,5,25
+Wolf,5,24
+Ninja,4,24
+Giant,6,23
+Pixie,4,22
+Spider,5,23
+Bandit,4,25
+Bat,6,25
+Turtle,4,25
+Troll,5,25
+Wolf,5,25
+Golem,4,24
+Crab,6,22
+Ogre,4,23
+Phoenix,4,24
+Giant,5,22
 endD
 B
-Jan,Shack,Can you go beat up those Centaurs for me?,0
-Ophelia,Granary,Would you please go kill all those Undeads in their Lair?,1
-Blondy,Inn,Would you please go kill all those Turtles in their Lair?,2
-Deirdre,Barn,Would you please go kill all those Tigers in their Lair?,3
-Koressa,Warehouse,Will you defeat the house of Ogres for me?,4
-Issi,Pub,Can you go beat up those Crabs for me?,5
-Van,Restaurant,Would you please go kill all those Goblins in their Lair?,6
-Dorella,Inn,Can you go beat up those Bats for me?,7
-Adan,Stables,Can you go beat up those Dryads for me?,8
-Karalee,Library,Will you defeat the house of Ghouls for me?,9
-April,Cottage,Can you go beat up those Boars for me?,10
-Jaynell,Mine,Can you go beat up those Gnomes for me?,11
-Moira,Cottage,Will you defeat the house of Ghouls for me?,12
-Bryna,Well,Can you go beat up those Orcs for me?,13
-Delly,Cottage,Will you defeat the house of Ants for me?,14
-Maris,Farm,Would you please go kill all those Phoenixs in their Lair?,15
-Alyss,Cottage,Can you go beat up those Owls for me?,16
-Lindy,Well,Will you defeat the house of Owls for me?,17
+Estrella,Bar,Will you defeat the house of Manticores for me?,0
+Chrysler,Pub,Will you defeat the house of Elephants for me?,1
+Honor,Mine,Can you go beat up those Witchs for me?,2
+Oralia,Bar,Would you please go kill all those Wolfs in their Lair?,3
+Alma,Vending,Would you please go kill all those Ninjas in their Lair?,4
+Fawnia,Farm,Would you please go kill all those Giants in their Lair?,5
+Karie,Shack,Can you go beat up those Pixies for me?,6
+Collen,Warehouse,Can you go beat up those Spiders for me?,7
+Vonni,Bar,Would you please go kill all those Bandits in their Lair?,8
+Aridatha,Cottage,Can you go beat up those Bats for me?,9
+Carmita,Restaurant,Will you defeat the house of Turtles for me?,10
+Ceil,Pub,Will you defeat the house of Trolls for me?,11
+Nadia,Stables,Will you defeat the house of Wolfs for me?,12
+Gilbertine,Library,Can you go beat up those Golems for me?,13
+Winona,Tavern,Would you please go kill all those Crabs in their Lair?,14
+Sharl,Granary,Can you go beat up those Ogres for me?,15
+Ora,Granary,Would you please go kill all those Phoenixs in their Lair?,16
+Hedda,Shack,Will you defeat the house of Giants for me?,17
 endB
 endZ
 Z
 9
 D
-Kobold,4,27
-Ninja,5,27
-Leprechaun,4,25
-Owl,5,27
-Tiger,5,28
-Kobold,5,28
-Golem,4,27
-Phoenix,4,25
-Troll,4,27
-Undead,6,25
-Snake,5,28
-Wyvern,4,28
-Monkey,4,26
-Gnome,4,26
-Lion,4,27
-Hound,4,26
-Ghost,6,27
-Pixie,4,28
+Boar,6,27
+Manticore,5,28
+Chicken,4,25
+Bat,4,25
+Centaur,4,27
+Spider,6,26
+Crab,5,27
 Pixie,6,27
-Bat,4,26
+Demon,4,26
+Tiger,6,28
+Elf,5,27
+Elf,6,28
+Troll,5,27
+Wolf,6,27
+Panther,6,27
+Gnome,5,27
+Dragon,4,25
+Wyvern,4,26
+Vampire,6,26
+Crab,4,26
 endD
 B
-Prisca,Stables,Would you please go kill all those Kobolds in their Lair?,0
-Guillemette,Cottage,Will you defeat the house of Ninjas for me?,1
-Bibbye,Vending,Can you go beat up those Leprechauns for me?,2
-Johanna,Library,Can you go beat up those Owls for me?,3
-Alys,Shack,Can you go beat up those Tigers for me?,4
-Mildrid,Vending,Would you please go kill all those Kobolds in their Lair?,5
-Gwendolyn,Barn,Can you go beat up those Golems for me?,6
-Cherri,Restaurant,Would you please go kill all those Phoenixs in their Lair?,7
-Cherilynn,Tavern,Would you please go kill all those Trolls in their Lair?,8
-Jillian,Pub,Will you defeat the house of Undeads for me?,9
-Teodora,Shack,Would you please go kill all those Snakes in their Lair?,10
-Catha,Stables,Will you defeat the house of Wyverns for me?,11
-Sasha,Pub,Will you defeat the house of Monkeys for me?,12
-Serene,Barn,Would you please go kill all those Gnomes in their Lair?,13
-Colette,Stables,Will you defeat the house of Lions for me?,14
-Maggy,Restaurant,Can you go beat up those Hounds for me?,15
-Roseanne,Vending,Would you please go kill all those Ghosts in their Lair?,16
-Jeanine,Vending,Can you go beat up those Pixies for me?,17
-Lexine,Tavern,Can you go beat up those Pixies for me?,18
-Doretta,Warehouse,Will you defeat the house of Bats for me?,19
+Kassi,Farm,Would you please go kill all those Boars in their Lair?,0
+Kerstin,Mine,Can you go beat up those Manticores for me?,1
+Josi,Tavern,Will you defeat the house of Chickens for me?,2
+Eudora,Library,Would you please go kill all those Bats in their Lair?,3
+Willie,Restaurant,Will you defeat the house of Centaurs for me?,4
+Guillemette,Library,Can you go beat up those Spiders for me?,5
+Eddi,Hall,Would you please go kill all those Crabs in their Lair?,6
+Frannie,Vending,Would you please go kill all those Pixies in their Lair?,7
+Alene,Vending,Can you go beat up those Demons for me?,8
+Dolley,Shack,Would you please go kill all those Tigers in their Lair?,9
+Elonore,Restaurant,Can you go beat up those Elfs for me?,10
+Hilliary,Tavern,Would you please go kill all those Elfs in their Lair?,11
+Zondra,Farm,Can you go beat up those Trolls for me?,12
+Kirsti,Warehouse,Will you defeat the house of Wolfs for me?,13
+Krystalle,Barn,Would you please go kill all those Panthers in their Lair?,14
+Joy,Shack,Will you defeat the house of Gnomes for me?,15
+Bobby,Cottage,Would you please go kill all those Dragons in their Lair?,16
+Robbie,Restaurant,Can you go beat up those Wyverns for me?,17
+Ag,Vending,Would you please go kill all those Vampires in their Lair?,18
+Genna,Granary,Would you please go kill all those Crabs in their Lair?,19
 endB
 endZ
 Z
 10
 D
-Turtle,5,29
-Ghoul,5,29
-Harpy,4,29
-Dragon,5,28
-Bear,6,29
-Monkey,4,28
-Phoenix,5,28
-Panther,4,29
-Dryad,6,29
-Ninja,6,30
-Banshee,5,31
-Elf,5,29
-Gorilla,4,28
+Wolf,6,30
+Elephant,4,31
+Gorilla,5,28
 Ant,5,31
-Skeleton,4,31
-Centaur,4,30
-Bat,5,30
-Ninja,4,30
-Panther,5,28
-Spider,6,31
-Kobold,6,28
-Bat,4,29
+Witch,5,31
+Dragon,5,29
+Owl,5,31
+Boar,6,30
+Zombie,4,31
+Elephant,5,30
+Owl,6,28
+Ghoul,5,31
+Ghost,4,29
+Ogre,5,29
+Bear,4,30
+Chicken,5,31
+Giant,6,28
+Goblin,5,28
+Hound,4,29
+Owl,6,29
+Chicken,5,30
+Ghost,6,31
 endD
 B
-Kari,Restaurant,Would you please go kill all those Turtles in their Lair?,0
-Jerrilee,Cottage,Can you go beat up those Ghouls for me?,1
-Darsie,Vending,Will you defeat the house of Harpys for me?,2
-Ameline,Stables,Will you defeat the house of Dragons for me?,3
-Alexis,Hall,Would you please go kill all those Bears in their Lair?,4
-Amalia,Library,Will you defeat the house of Monkeys for me?,5
-Kristi,Inn,Would you please go kill all those Phoenixs in their Lair?,6
-Morgen,Mine,Would you please go kill all those Panthers in their Lair?,7
-Raven,Restaurant,Can you go beat up those Dryads for me?,8
-Mabelle,Shack,Can you go beat up those Ninjas for me?,9
-Elisabet,Tavern,Can you go beat up those Banshees for me?,10
-Beulah,Cottage,Would you please go kill all those Elfs in their Lair?,11
-Fifi,Farm,Can you go beat up those Gorillas for me?,12
-Sonni,Stables,Would you please go kill all those Ants in their Lair?,13
-Flss,Cottage,Can you go beat up those Skeletons for me?,14
-Joice,Warehouse,Can you go beat up those Centaurs for me?,15
-Kiele,Inn,Will you defeat the house of Bats for me?,16
-Mahalia,Cottage,Can you go beat up those Ninjas for me?,17
-Kacie,Granary,Will you defeat the house of Panthers for me?,18
-Karil,Cottage,Will you defeat the house of Spiders for me?,19
-Norean,Farm,Would you please go kill all those Kobolds in their Lair?,20
-Adiana,Granary,Can you go beat up those Bats for me?,21
+Dorolisa,Pub,Would you please go kill all those Wolfs in their Lair?,0
+Erda,Well,Can you go beat up those Elephants for me?,1
+Dorrie,Barn,Would you please go kill all those Gorillas in their Lair?,2
+Myrtice,Cottage,Can you go beat up those Ants for me?,3
+Twila,Farm,Can you go beat up those Witchs for me?,4
+Ranique,Granary,Would you please go kill all those Dragons in their Lair?,5
+Brynna,Restaurant,Can you go beat up those Owls for me?,6
+Corabella,Barn,Will you defeat the house of Boars for me?,7
+Maurise,Stables,Would you please go kill all those Zombies in their Lair?,8
+Britte,Shack,Would you please go kill all those Elephants in their Lair?,9
+Benedicta,Well,Will you defeat the house of Owls for me?,10
+Teddi,Stables,Would you please go kill all those Ghouls in their Lair?,11
+Jobina,Warehouse,Would you please go kill all those Ghosts in their Lair?,12
+Kora,Stables,Would you please go kill all those Ogres in their Lair?,13
+Elna,Tavern,Will you defeat the house of Bears for me?,14
+Renell,Shack,Can you go beat up those Chickens for me?,15
+Cassondra,Warehouse,Can you go beat up those Giants for me?,16
+Zonnya,Hall,Can you go beat up those Goblins for me?,17
+Stephana,Hall,Would you please go kill all those Hounds in their Lair?,18
+Maxi,Mine,Would you please go kill all those Owls in their Lair?,19
+Sarene,Inn,Will you defeat the house of Chickens for me?,20
+Tawnya,Warehouse,Can you go beat up those Ghosts for me?,21
 endB
 endZ
