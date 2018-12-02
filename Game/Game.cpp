@@ -408,6 +408,7 @@ void Game::loadGame()
 				}
 			}
 
+			//build the buildings (rooms) inside the zones.
 			while (getline(inputFile,s) && s!= "endB")
 			{
 				if (s != "B")
@@ -419,21 +420,25 @@ void Game::loadGame()
 					int ref;
 
 					int l;
+					//character name for the building.
 					for (l = 0; l < s.length() && s[l] != ','; l++)
 					{
 						npc_name += s[l];
 					}
 					l++;
+					//building name for the building.
 					for (; l< s.length() && s[l] != ','; l++)
 					{
 						building_name += s[l];
 					}
 					l++;
+					//message for the building.
 					for (; l< s.length() && s[l] != ','; l++)
 					{
 						message += s[l];
 					}
 					l++;
+					//refernce for the building
 					for (; l < s.length(); l++)
 					{
 						temp += s[l];
@@ -725,6 +730,7 @@ void Game::playGame()
 
 					NameGenerator foodNames("food-names.txt");
 
+					//create a random list of foods for the player to buy.
 					for (i=0; i < numFoods; i++)
 					{
 						names[i] = foodNames.getRandomName();
@@ -945,6 +951,7 @@ void Game::playGame()
 						}
 						else
 						{
+							//buy the weapon/armor.
 							p.setGold(p.getGold()-prices[choice]);
 							if (choice < numWeps)
 							{
@@ -964,7 +971,7 @@ void Game::playGame()
 				}
 				case 2:
 				{
-					//TODO: finish this
+					//selling items.
 					cout << "What items would you like to sell?" << endl;
 					int j = 0;
 
@@ -1027,6 +1034,7 @@ void Game::playGame()
 				}
 			}
 		}
+		//If the player is inside a room, but not in a dungeon.
 		else if(currentRoom >= 0 && currentDungeon == -1)
 		{
 			//I will be accessing the current room a lot
