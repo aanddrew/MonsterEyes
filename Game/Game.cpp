@@ -9,6 +9,10 @@
 
 using namespace std;
 
+/*
+Written by Andrew Weller. andrewweller.cs@gmail.com
+*/
+
 Game::Game():numZones(10)
 {
 	srand(time(0));
