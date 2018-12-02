@@ -18,10 +18,10 @@ Zone::Zone(int levelIn, int numRoomsIn, int numDungeonsIn)
 
 	NameGenerator ng("first-names.txt");
 	Character * c = new Character(ng.getRandomName(),5);
-	foodShop = new Room(c, "groceries", "Welcome to my grocery store! You can get all kinds of food here.", -1);
+	foodShop = new Room(c, "groceries (Shop)", "Welcome to my grocery store! You can get all kinds of food here.", -1);
 
 	Character *bc = new Character(ng.getRandomName(),5);
-	itemShop = new Room(bc, "smithing", "Welcome to the shop. I'm your guy for Armor and Weapons.", -1);
+	itemShop = new Room(bc, "armor & weapons (Shop)", "Welcome to the shop. I'm your guy for Armor and Weapons.", -1);
 }
 
 vector<Dungeon*>* Zone::getDungeons()

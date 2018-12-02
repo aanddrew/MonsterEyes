@@ -143,6 +143,9 @@ Game::Game():numZones(10)
 	loadGame();
 }
 
+/*
+This function loads the game state from the Game.txt File
+*/
 void Game::loadGame()
 {
 	ifstream inputFile("Game.txt");
@@ -200,6 +203,7 @@ void Game::loadGame()
 				if (s != "NULL")
 				{
 					//add the item to their inventory
+					//all items have a type which is the first word in the line
 					string type ="";
 					int i;
 					for (i = 0; i < s.length() && s[i] != ','; i++)
@@ -208,8 +212,11 @@ void Game::loadGame()
 					}
 					i++;
 
+					//I'm sure theres a better way to do this...
+					//but for now I just check if the item is one of the three items that exist in the game
 					if (type == "Armor" || type == "Weapon")
 					{
+						// all armor and weapons have a name...
 						string name;
 						//Health or Damage
 						int HealthorDamage;
@@ -227,6 +234,7 @@ void Game::loadGame()
 						i++;
 						HealthorDamage = stoi(temp);
 
+						//armor has a slot value that must be obtained
 						if (type == "Armor")
 						{
 							temp = "";
@@ -239,6 +247,7 @@ void Game::loadGame()
 							Armor * a = new Armor(name, HealthorDamage, slot);
 							p.getInventory()->push_back(a);
 						}
+						//weapon does not have any moreparameters and can be created immediately
 						else
 						{
 							Weapon * w = new Weapon(name, HealthorDamage);
@@ -247,6 +256,8 @@ void Game::loadGame()
 					}
 					if (type == "HealthPot")
 					{
+						//I would have gotten the name for all three initially,
+						//but the prototype for health Pot did not have a name
 						string name;
 						string temp;
 						int health;
@@ -275,6 +286,7 @@ void Game::loadGame()
 		//wearing checking...
 		if(s == "W")
 		{
+			//do the same thing for items that the player is wearing.
 			while (getline(inputFile,s))
 			{
 				if (s != "NULL")
@@ -383,9 +395,6 @@ void Game::loadGame()
 						temp += s[l];
 					}
 					maxDamage = stoi(temp);
-					// cout << maxDamage << endl;
-
-					// cout << enemy_name << numRooms << 
 
 					//have to use new operator so that it creates
 					//the object on the heap and thus gives it a permanent address
@@ -427,7 +436,7 @@ void Game::loadGame()
 					}
 					ref = stoi(temp);
 
-					//create a character on the heap for the game to use
+					//create a character on the heap for the new room to use
 					Character * npc = new Character(npc_name, 5);
 
 					//create a room on the heap for the game to use.
@@ -716,7 +725,7 @@ void Game::playGame()
 					{
 						names[i] = foodNames.getRandomName();
 						healths[i] = rand() % ((zones[currentZone].getLevel()+1)*2) + 1;
-						prices[i] = healths[i] + (rand()%3)*zones[currentZone].getLevel();
+						prices[i] = healths[i] + (rand()%3)*zones[currentZone].getLevel() + 2;
 						cout << "\t(" << i << ") " << names[i] << " [" << healths[i] << " health]" << " - " << prices[i] << " gold." << endl;
 					}
 					cout << "\t(" << i << ") None?" << endl;
@@ -758,8 +767,9 @@ void Game::playGame()
 			cout << "\t" << zones[currentZone].getItemShop()->getMessage() << endl;
 
 			cout << "Would you like to: " << endl;
-			cout << "\t(1) Buy some Armor/Weapons?" << endl;
-			cout << "\t(2) Leave the building?" << endl;
+			cout << "\t(1) Buy  some Armor/Weapons?" << endl;
+			cout << "\t(2) Sell some Armor/Weapons?" << endl;
+			cout << "\t(3) Leave the building?" << endl;
 			cin >> input;
 
 			choice = stoi(input);
@@ -893,11 +903,11 @@ void Game::playGame()
 					{
 						if (i < numWeps)
 						{
-							prices[i] = rand() % (4*zones[currentZone].getLevel()) + wepDamages[i];
+							prices[i] = rand() % (4*zones[currentZone].getLevel()) + wepDamages[i] + 2;
 						}
 						else
 						{
-							prices[i] = rand() % (4*zones[currentZone].getLevel()) + armHealths[i-numWeps];
+							prices[i] = rand() % (4*zones[currentZone].getLevel()) + armHealths[i-numWeps]	 + 2;
 						}
 					}
 
@@ -949,6 +959,64 @@ void Game::playGame()
 					break;
 				}
 				case 2:
+				{
+					//TODO: finish this
+					cout << "What items would you like to sell?" << endl;
+					int j = 0;
+
+					ifstream matNames("material-names.txt");
+					string mat_names[10];
+					for (int i = 0; i < 10; i++)
+					{
+						getline(matNames, mat_names[i]);
+					}
+					vector<Item*> sellables;
+					vector<int> prices;
+					vector<int> indeces;
+					for (int i = 0; i < p.getInventory()->size(); i++)
+					{
+						Item * item = p.getInventory()->at(i);
+						sellables.reserve(p.getInventory()->size());
+
+						//if the item is an armor or weapon
+						if (dynamic_cast<Armor*>(item) != nullptr || 
+							dynamic_cast<Weapon*>(item) != nullptr)
+						{
+							string mat = "";
+							for (int k = 0; k < item->getName().size() && item->getName()[k] != ' '; k++)
+							{
+								mat += item->getName()[k];
+							}
+							int level = 0;
+							for (int k = 0; k < 10; k++)
+							{
+								if (mat == mat_names[k])
+								{
+									level = k + 1;
+								}
+							}
+							// cout << level << endl;
+							int price = rand() % (level*3) + 1;
+							cout << "(" << j << ") " << item->getName() << " - " << price << " gold." << endl;
+							sellables.push_back(item);
+							prices.push_back(price);
+							indeces.push_back(i);
+
+							j++;
+						}
+					}
+					cout << "("<< j << ") None" << endl;
+					cin >> input;
+					choice = stoi(input);
+					if (choice != j)
+					{
+						p.setGold(p.getGold()+prices.at(choice));
+						p.getInventory()->erase(p.getInventory()->begin() + indeces.at(choice));
+						cout << "You sold " << sellables.at(choice)->getName() << " for " << prices.at(choice) << " gold." << endl;
+					}
+
+				}
+				case 3:
 				{
 					currentRoom = -1;
 					break;
