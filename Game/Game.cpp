@@ -1,3 +1,8 @@
+/*
+All code is property of Andrew Weller and nobody else has permission to call this their own.
+For all inquiries - andrewweller.cs@gmail.com
+*/
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -101,6 +106,10 @@ Game::Game():numZones(10)
 			//this block for writing the dungeons
 			//we must write the dungeons first so that the buildings know the type
 			//	of enemy inside their referenced dungeon
+			/*
+			All code is property of Andrew Weller and nobody else has permission to call this their own.
+			For all inquiries - andrewweller.cs@gmail.com
+			*/
 			outputFile << "D" << endl;
 			for (int j = 0; j < 4+i*2; j++)
 			{
@@ -152,6 +161,7 @@ This function loads the game state from the Game.txt File
 */
 void Game::loadGame()
 {
+	//This code belongs to Andrew Weller -nobody else has permission to call this their own
 	ifstream inputFile("Game.txt");
 
 	string s;

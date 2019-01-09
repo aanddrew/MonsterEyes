@@ -1,3 +1,8 @@
+/*
+All code is property of Andrew Weller and nobody else has permission to call this their own.
+For all inquiries - andrewweller.cs@gmail.com
+*/
+
 #ifndef ITEM_H
 #define ITEM_H
 
