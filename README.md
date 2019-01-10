@@ -14,6 +14,11 @@ Take a spin and see if you can get to zone 10. Where nothing happens. I would co
 Still I did learn a lot about c++ and computers in general through this endeavour.
 I'm going to improve more for the next project.
 
+ATTRIBUTION -
+All code in this project is original. However, I did borrow the text file "first-names.txt" from Dominic Tarr
+at this github link - https://github.com/dominictarr/random-name/blob/master/first-names.txt
+
+
 //For professional purposes
 andrewweller.cs@gmail.com
 //For personal purposes or questions
